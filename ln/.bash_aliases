@@ -12,3 +12,6 @@ alias search="apt-cache search"
 # RDP shortcuts
 alias rdp='xfreerdp -u jlg -d apu --rfx -x 80 -g 1680x1050 --disable-full-window-drag'
 alias rdpf='xfreerdp -u jlg -d apu --rfx -x 80 -f --disable-full-window-drag'
+
+# MISC commands
+alias gam="python ~/opt/gam/gam.py"

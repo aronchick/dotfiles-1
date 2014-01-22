@@ -2,3 +2,6 @@
 ln/.ssh/authorized_keys
 ln/.ssh/id_*
 ln/.ssh/known_hosts
+
+# Misc files containing private data
+ln/.irssi/sasl.auth
