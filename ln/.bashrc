@@ -121,3 +121,7 @@ PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Expand on the path
 export PATH=${PATH}:$HOME/opt/gcutil-1.9.1:$HOME/opt/ansible
+
+# change editor from the nano default
+export EDITOR=vim
+export VISUAL=vim
