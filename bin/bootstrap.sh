@@ -15,6 +15,9 @@ Licensed under the MIT license.
 HELP
 exit; fi
 
+#Super simple do most of it with just one line
+#for i in $( ls -A ); do ln -s -f ~/.dotfiles/ln/$i ~/$i; done
+
 # Logging stuff.
 function e_header()   { echo -e "\n\033[1m$@\033[0m"; }
 function e_success()  { echo -e " \033[1;32m✔\033[0m  $@"; }
@@ -125,15 +128,9 @@ function do_stuff() {
 
 # Enough with the functions, let's do stuff.
 
-# Ensure that we can actually, like, compile anything.
-if [[ ! "$(type -P gcc)" && "$OSTYPE" =~ ^darwin ]]; then
-  e_error "XCode or the Command Line Tools for XCode must be installed first."
-  exit 1
-fi
-
 # If Git is not installed, install it (Ubuntu only, since Git comes standard
 # with recent XCode or CLT)
-if [[ ! "$(type -P git)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+if [[ ! "$(type -P git)" ]]; then
   e_header "Installing Git"
   sudo apt-get -qq install git-core
 fi
@@ -162,9 +159,6 @@ else
   git submodule update --init --recursive --quiet
 fi
 
-# Utilities, helpers.
-source ~/.dotfiles/source/10_misc.sh
-
 # Add binaries into the path
 PATH=~/.dotfiles/bin:$PATH
 export PATH
@@ -188,12 +182,6 @@ do_stuff "link"
 # Alert if backups were made.
 if [[ "$backup" ]]; then
   echo -e "\nBackups were moved to ~/${backup_dir#$HOME/}"
-fi
-
-# Lest I forget to do a few additional things...
-if [[ "$new_dotfiles_install" && -e "conf/firsttime_reminder.sh" ]]; then
-  e_header "First-Time Reminders"
-  source "conf/firsttime_reminder.sh"
 fi
 
 # All done!
