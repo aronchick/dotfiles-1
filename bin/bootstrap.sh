@@ -15,6 +15,9 @@ Licensed under the MIT license.
 HELP
 exit; fi
 
+#Super simple do most of it with just one line
+#for i in $( ls -A ); do ln -s -f ~/.dotfiles/ln/$i ~/$i; done
+
 # Logging stuff.
 function e_header()   { echo -e "\n\033[1m$@\033[0m"; }
 function e_success()  { echo -e " \033[1;32m✔\033[0m  $@"; }
@@ -155,9 +158,6 @@ else
   git pull
   git submodule update --init --recursive --quiet
 fi
-
-# Utilities, helpers.
-source ~/.dotfiles/src/10_misc.sh
 
 # Add binaries into the path
 PATH=~/.dotfiles/bin:$PATH
