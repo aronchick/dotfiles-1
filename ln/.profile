@@ -20,6 +20,6 @@ fi
 
 # set PATH so it includes ~/opt/aws if it exists
 if [ -d "$HOME/opt/aws" ] ; then
-    PATH=$HOME/opt/aws/ami:$HOME/opt/aws/as:$HOME/opt/aws/cw:$HOME/opt/aws/ec2:$PATH
+    PATH=$HOME/opt/aws/ami/bin:$HOME/opt/aws/binas:$HOME/opt/aws/cw/bin:$HOME/opt/aws/ec2/bin:$PATH
     export PATH
 fi
