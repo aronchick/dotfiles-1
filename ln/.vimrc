@@ -14,6 +14,9 @@ set incsearch                   "is:    automatically begins searching as you ty
 set ignorecase                  "ic:    ignores case when pattern matching
 set smartcase                   "scs:   ignores ignorecase when pattern contains uppercase characters
 set hlsearch                    "hls:   highlights search results
+set expandtab
+set smarttab
+set autoindent
 
 " }}}
 
