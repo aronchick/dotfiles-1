@@ -5,7 +5,8 @@
 set nocompatible
 filetype plugin indent on
 
- call pathogen#infect()
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#incubate()
 
 " Search {{{
 
