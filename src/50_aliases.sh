@@ -19,6 +19,7 @@ alias -- -='cd -'
 # File size
 alias fs="stat -f '%z bytes'"
 alias df="df -h"
+alias du='du -ch'
 
 # Package management
 alias update="sudo apt-get -qq update && sudo apt-get upgrade"
@@ -32,9 +33,16 @@ alias rdpf='xfreerdp -u jlg -d apu --rfx -x 80 -f --disable-full-window-drag'
 
 # MISC commands
 alias gam="python ~/opt/gam/gam.py"
-gtfo="/dev/null"
-stfu="/dev/null"
-wtf="/dev/urandom"
+alias gtfo="/dev/null"
+alias stfu="/dev/null"
+alias wtf="/dev/urandom"
+alias mount='mount | column -t'
+alias h='history'
+
+# setup worktunnel in .ssh/config
+alias sshwt='ssh -A -t worktunnel ssh -A -t'
+# setup hometunnel is .ssh/config
+alias sshht='ssh -A -t hometunnel ssh -A -t'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
