@@ -32,7 +32,3 @@ export LESS=-XR
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
-
-# change editor from the nano default
-export EDITOR=vim
-export VISUAL=vim

@@ -1,0 +1,13 @@
+vim    install
+tmux   install
+git    install
+cifs-utils    install
+curl   install
+gdebi  install
+build-essential install
+nmap   install
+remmina install
+vagrant install
+ansible install
+vlc    install
+shutter install

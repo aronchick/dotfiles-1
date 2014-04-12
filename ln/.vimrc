@@ -3,9 +3,41 @@
 " https://github.com/whiteinge/dotfiles/blob/master/.vimrc
 
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" vundle-ception
+Bundle 'gmarik/vundle'
+
+" Syntax highlighting etc
+Bundle 'puppetlabs/puppet-syntax-vim'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'chase/vim-ansible-yaml'
+Bundle 'gmarik/vim-markdown'
+
+" Git integration
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-fugitive'
+
 filetype plugin indent on
 
- call pathogen#infect()
+" General {{{
+	
+set nobackup
+set noswapfile
+set shiftwidth=4  " number of spaces to use for autoindenting
+set tabstop=4     " a tab is four spaces
+nmap <silent> ,/ :nohlsearch<CR>
+
+" force myself to learn vim "aarows"
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+}}}
 
 " Search {{{
 
@@ -13,6 +45,9 @@ set incsearch                   "is:    automatically begins searching as you ty
 set ignorecase                  "ic:    ignores case when pattern matching
 set smartcase                   "scs:   ignores ignorecase when pattern contains uppercase characters
 set hlsearch                    "hls:   highlights search results
+set expandtab
+set smarttab
+set autoindent
 
 " }}}
 
@@ -39,6 +74,12 @@ set viminfo='200                "vi:    For a nice, huuuuuge viminfo file
 " Multi-buffer/window/tab editing {{{
 set splitright                  "spr:   puts new vsplit windows to the right of the current
 set splitbelow                  "sb:    puts new split windows to the bottom of the current
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
+nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
+nmap <silent> <c-h> :wincmd h<CR>                                                                                                                       
+nmap <silent> <c-l> :wincmd l<CR>
 " }}}
 
 set mouse=                      "       Disable mouse control for console
