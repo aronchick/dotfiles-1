@@ -37,7 +37,7 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-}}}
+" }}}
 
 " Search {{{
 
