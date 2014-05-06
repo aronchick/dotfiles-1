@@ -28,7 +28,7 @@ alias remove="sudo apt-get remove"
 alias search="apt-cache search"
 
 # RDP shortcuts
-alias rdp='xfreerdp -u jlg -d apu --rfx -x 80 -g 1680x1050 --disable-full-window-drag'
+alias rdp='xfreerdp -u jlg -d apu --rfx -x 80 -g 1600x900 --disable-full-window-drag'
 alias rdpf='xfreerdp -u jlg -d apu --rfx -x 80 -f --disable-full-window-drag'
 
 # MISC commands

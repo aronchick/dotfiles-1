@@ -5,3 +5,5 @@ ln/.ssh/known_hosts
 
 # Misc files containing private data
 ln/.irssi/sasl.auth
+
+ln/.config/sumblime-text-3/*

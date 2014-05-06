@@ -16,6 +16,7 @@ Bundle 'puppetlabs/puppet-syntax-vim'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'gmarik/vim-markdown'
+Bundle 'saltstack/salt-vim'
 
 " Git integration
 Bundle 'tpope/vim-git'
