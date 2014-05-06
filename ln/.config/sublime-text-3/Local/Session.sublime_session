@@ -1,6 +1,8 @@
 {
 	"folder_history":
 	[
+		"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab",
+		"/home/rothgar/projects/salt-states",
 		"/home/rothgar/projects/ansible-playbooks/atlassian",
 		"/home/rothgar/projects/ansible-playbooks/apu",
 		"/home/rothgar/opt/ansible-playbooks/tomcat",
@@ -13,7 +15,7 @@
 		"/home/rothgar/projects/google-python-exercises"
 	],
 	"last_version": 3059,
-	"last_window_id": 35,
+	"last_window_id": 39,
 	"log_indexing": false,
 	"settings":
 	{
@@ -24,6 +26,14 @@
 			{
 				"selected_items":
 				[
+					[
+						"wget_",
+						"wget_user"
+					],
+					[
+						"salt-",
+						"salt-minion"
+					],
 					[
 						"v",
 						"version"
@@ -57,11 +67,19 @@
 			"build_system": "",
 			"command_palette":
 			{
-				"height": 392.0,
+				"height": 54.0,
 				"selected_items":
 				[
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"MarkdownEd",
+						"Preferences: MarkdownEditing Settings – User"
+					]
 				],
-				"width": 392.0
+				"width": 449.0
 			},
 			"console":
 			{
@@ -81,22 +99,65 @@
 			},
 			"file_history":
 			[
+				"/home/rothgar/tmp/tableau_sca.crt",
+				"/run/user/1000/gvfs/smb-share:server=apufiles.apu.edu,share=user$/jlgarrison/tableau/tableau.crt",
+				"/home/rothgar/tmp/pg-query.log",
+				"/run/user/1000/gvfs/smb-share:server=apufiles.apu.edu,share=user$/jlgarrison/Tableau.csr",
+				"/home/rothgar/.ssh/id_rsa.pub",
+				"/home/rothgar/opt/scripts/apu/sh/install-ralus.sh",
+				"/home/rothgar/.dotfiles/init/pkgs",
+				"/home/rothgar/.dotfiles/init/ppa-list",
+				"/home/rothgar/opt/scripts/apu/sh/apple_cache_stats.sh",
+				"/run/user/1000/gvfs/smb-share:server=apufiles.apu.edu,share=user$/jlgarrison/apu-phone.txt",
+				"/home/rothgar/projects/ansible-playbooks/apu/.gitignore",
+				"/home/rothgar/projects/ansible-playbooks/apu/test.yml",
+				"/home/rothgar/projects/ansible-playbooks/apu/vmware-tools.yml",
+				"/home/rothgar/projects/ansible-playbooks/apu/roles/common/templates/network.j2",
+				"/home/rothgar/projects/ansible-playbooks/hosts",
+				"/home/rothgar/projects/ansible-playbooks/apu/roles/common/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/common/vars/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/tomcat/site.yml",
+				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/common/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab/site.yml",
+				"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab/vars/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab/tasks/gitlab-dependencies.yml",
+				"/home/rothgar/projects/salt-states/.gitignore",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/hosts",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/vars/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/salt.yml",
+				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/selinux/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/role-epel/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/role-epel/TODO",
+				"/home/rothgar/projects/salt-states/salt.yml",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/defaults/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/README.md",
+				"/home/rothgar/projects/ansible-playbooks/salt/hosts",
+				"/home/rothgar/documents/resumes/Justin Garrison.txt",
+				"/home/rothgar/downloads/random password.ps1",
+				"/home/rothgar/projects/ansible-playbooks/test.yml",
 				"/home/rothgar/projects/ansible-playbooks/hosts.test",
-				"/home/rothgar/projects/ansible-playbooks/atlassian/atlassian/install_product.yml",
-				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/common/tasks/main.yml",
+				"/home/rothgar/.dotfiles/ln/.config/sublime-text-3/Packages/User/Markdown.sublime-settings",
+				"/home/rothgar/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+				"/home/rothgar/.vimrc",
+				"/home/rothgar/projects/ansible-playbooks/atlassian/group_vars/all",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/group_vars/jira",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/atlassian/templates/response.varfile.j2",
+				"/home/rothgar/projects/ansible-playbooks/atlassian/hosts.devel",
+				"/home/rothgar/downloads/VMware-ClientIntegrationPlugin-5.1.0.x86_64.bundle",
+				"/home/rothgar/projects/ansible-playbooks/apu/tomcat-apps.yml",
+				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/atlassian/vars/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/atlassian/atlassian/install_product.yml",
+				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/common/tasks/main.yml",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/group_vars/confluence",
-				"/home/rothgar/projects/ansible-playbooks/atlassian/group_vars/all",
 				"/etc/ansible/hosts",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/jira/tasks/main.yml",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/jira/vars/main.yml",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/confluence/vars/main.yml",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/atlassian/README.md",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/atlassian/templates/response.varfile.j2",
-				"/home/rothgar/projects/ansible-playbooks/apu/vmware-tools.yml",
 				"/home/rothgar/tmp/gmail_users",
-				"/home/rothgar/projects/ansible-playbooks/hosts",
 				"/home/rothgar/projects/ansible-playbooks/salt.hosts",
 				"/home/rothgar/tmp/hello.txt",
 				"/home/rothgar/projects/ansible-playbooks/role-epel/README.md",
@@ -108,8 +169,6 @@
 				"/home/rothgar/projects/ansible-playbooks/atlassian/postgresql/install_server.yml",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/vagrant/inventory/centos-6.4-x86_64.ini",
 				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/common/templates/tomcat6",
-				"/home/rothgar/projects/ansible-playbooks/apu/roles/common/templates/network.j2",
-				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/common/tasks/main.yml",
 				"/home/rothgar/opt/scripts/APU/SH/RHEL6-join-domain.sh",
 				"/home/rothgar/opt/scripts/disk-space.sh",
 				"/home/rothgar/opt/scripts/ubuntu-13.10.sh",
@@ -131,9 +190,7 @@
 				"/home/rothgar/downloads/Set NTP and Syslog .ps1",
 				"/home/rothgar/.cache/.fr-i7CAtx/DisableLibariesFeature.reg",
 				"/home/rothgar/.cache/.fr-KrJBAw/DisableLibariesFeature.reg",
-				"/home/rothgar/documents/resumes/Justin Garrison.txt",
 				"/home/rothgar/documents/resumes/Justin Garrison.htm",
-				"/run/user/1000/gvfs/smb-share:server=apufiles.apu.edu,share=user$/jlgarrison/apu-phone.txt",
 				"/home/rothgar/.cache/.fr-W8KaXo/9ad7eb18-8d7a-49d3-b9fe-a6e5ba807036/dates.txt",
 				"/home/rothgar/tmp/log/pvs-1/StreamProcess-3.log",
 				"/home/rothgar/tmp/log/pvs-1/StreamService-8.log",
@@ -179,6 +236,7 @@
 				"case_sensitive": false,
 				"find_history":
 				[
+					"pine",
 					"jira",
 					"\"9.0.5.21789\"",
 					" \\$",
@@ -258,7 +316,7 @@
 			{
 			}
 		},
-		"new_window_width": 1546.0
+		"new_window_width": 1549.0
 	},
 	"windows":
 	[
@@ -267,6 +325,14 @@
 			{
 				"selected_items":
 				[
+					[
+						"wget_",
+						"wget_user"
+					],
+					[
+						"salt-",
+						"salt-minion"
+					],
 					[
 						"v",
 						"version"
@@ -300,19 +366,10 @@
 			"buffers":
 			[
 				{
-					"file": "site.yml",
+					"file": "/home/rothgar/.dotfiles/init/pkgs",
 					"settings":
 					{
-						"buffer_size": 385,
-						"line_ending": "Unix",
-						"name": "---"
-					}
-				},
-				{
-					"file": "roles/atlassian/tasks/main.yml",
-					"settings":
-					{
-						"buffer_size": 800,
+						"buffer_size": 196,
 						"line_ending": "Unix"
 					}
 				}
@@ -326,6 +383,10 @@
 					[
 						"install",
 						"Package Control: Install Package"
+					],
+					[
+						"MarkdownEd",
+						"Preferences: MarkdownEditing Settings – User"
 					]
 				],
 				"width": 449.0
@@ -348,13 +409,52 @@
 			},
 			"file_history":
 			[
+				"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab/vars/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab/tasks/gitlab-dependencies.yml",
+				"/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab/site.yml",
+				"/home/rothgar/tmp/tableau_sca.crt",
+				"/run/user/1000/gvfs/smb-share:server=apufiles.apu.edu,share=user$/jlgarrison/tableau/tableau.crt",
+				"/home/rothgar/tmp/pg-query.log",
+				"/run/user/1000/gvfs/smb-share:server=apufiles.apu.edu,share=user$/jlgarrison/Tableau.csr",
+				"/home/rothgar/.ssh/id_rsa.pub",
+				"/home/rothgar/opt/scripts/apu/sh/install-ralus.sh",
+				"/home/rothgar/.dotfiles/init/pkgs",
+				"/home/rothgar/.dotfiles/init/ppa-list",
+				"/home/rothgar/opt/scripts/apu/sh/apple_cache_stats.sh",
+				"/run/user/1000/gvfs/smb-share:server=apufiles.apu.edu,share=user$/jlgarrison/apu-phone.txt",
+				"/home/rothgar/projects/ansible-playbooks/apu/.gitignore",
+				"/home/rothgar/projects/ansible-playbooks/apu/test.yml",
+				"/home/rothgar/projects/ansible-playbooks/apu/vmware-tools.yml",
+				"/home/rothgar/projects/ansible-playbooks/apu/roles/common/templates/network.j2",
+				"/home/rothgar/projects/ansible-playbooks/hosts",
+				"/home/rothgar/projects/ansible-playbooks/apu/roles/common/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/common/vars/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/tomcat/site.yml",
+				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/common/tasks/main.yml",
+				"/home/rothgar/projects/salt-states/.gitignore",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/hosts",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/vars/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/salt.yml",
+				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/selinux/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/role-epel/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/role-epel/TODO",
+				"/home/rothgar/projects/salt-states/salt.yml",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/defaults/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/tasks/main.yml",
+				"/home/rothgar/projects/ansible-playbooks/saltstack/README.md",
+				"/home/rothgar/projects/ansible-playbooks/salt/hosts",
+				"/home/rothgar/documents/resumes/Justin Garrison.txt",
+				"/home/rothgar/downloads/random password.ps1",
+				"/home/rothgar/projects/ansible-playbooks/test.yml",
+				"/home/rothgar/projects/ansible-playbooks/hosts.test",
+				"/home/rothgar/.dotfiles/ln/.config/sublime-text-3/Packages/User/Markdown.sublime-settings",
 				"/home/rothgar/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 				"/home/rothgar/.vimrc",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/group_vars/all",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/group_vars/jira",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/atlassian/templates/response.varfile.j2",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/hosts.devel",
-				"/home/rothgar/projects/ansible-playbooks/apu/vmware-tools.yml",
 				"/home/rothgar/downloads/VMware-ClientIntegrationPlugin-5.1.0.x86_64.bundle",
 				"/home/rothgar/projects/ansible-playbooks/apu/tomcat-apps.yml",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/atlassian/vars/main.yml",
@@ -367,9 +467,7 @@
 				"/home/rothgar/projects/ansible-playbooks/atlassian/roles/confluence/vars/main.yml",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/atlassian/README.md",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/atlassian/templates/response.varfile.j2",
-				"/home/rothgar/projects/ansible-playbooks/hosts.test",
 				"/home/rothgar/tmp/gmail_users",
-				"/home/rothgar/projects/ansible-playbooks/hosts",
 				"/home/rothgar/projects/ansible-playbooks/salt.hosts",
 				"/home/rothgar/tmp/hello.txt",
 				"/home/rothgar/projects/ansible-playbooks/role-epel/README.md",
@@ -381,8 +479,6 @@
 				"/home/rothgar/projects/ansible-playbooks/atlassian/postgresql/install_server.yml",
 				"/home/rothgar/projects/ansible-playbooks/atlassian/vagrant/inventory/centos-6.4-x86_64.ini",
 				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/common/templates/tomcat6",
-				"/home/rothgar/projects/ansible-playbooks/apu/roles/common/templates/network.j2",
-				"/home/rothgar/projects/ansible-playbooks/tomcat/roles/common/tasks/main.yml",
 				"/home/rothgar/opt/scripts/APU/SH/RHEL6-join-domain.sh",
 				"/home/rothgar/opt/scripts/disk-space.sh",
 				"/home/rothgar/opt/scripts/ubuntu-13.10.sh",
@@ -404,9 +500,7 @@
 				"/home/rothgar/downloads/Set NTP and Syslog .ps1",
 				"/home/rothgar/.cache/.fr-i7CAtx/DisableLibariesFeature.reg",
 				"/home/rothgar/.cache/.fr-KrJBAw/DisableLibariesFeature.reg",
-				"/home/rothgar/documents/resumes/Justin Garrison.txt",
 				"/home/rothgar/documents/resumes/Justin Garrison.htm",
-				"/run/user/1000/gvfs/smb-share:server=apufiles.apu.edu,share=user$/jlgarrison/apu-phone.txt",
 				"/home/rothgar/.cache/.fr-W8KaXo/9ad7eb18-8d7a-49d3-b9fe-a6e5ba807036/dates.txt",
 				"/home/rothgar/tmp/log/pvs-1/StreamProcess-3.log",
 				"/home/rothgar/tmp/log/pvs-1/StreamService-8.log",
@@ -438,7 +532,7 @@
 			],
 			"find":
 			{
-				"height": 35.0
+				"height": 25.0
 			},
 			"find_in_files":
 			{
@@ -452,6 +546,7 @@
 				"case_sensitive": false,
 				"find_history":
 				[
+					"pine",
 					"jira",
 					"\"9.0.5.21789\"",
 					" \\$",
@@ -475,65 +570,39 @@
 				"whole_word": false,
 				"wrap": true
 			},
+			"folders":
+			[
+				{
+					"follow_symlinks": true,
+					"path": "/home/rothgar/projects/ansible-playbooks/ansible-role-gitlab"
+				}
+			],
 			"groups":
 			[
 				{
-					"selected": 1,
+					"selected": 0,
 					"sheets":
 					[
 						{
 							"buffer": 0,
-							"file": "site.yml",
+							"file": "/home/rothgar/.dotfiles/init/pkgs",
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 385,
+								"buffer_size": 196,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										163,
-										163
+										196,
+										196
 									]
 								],
 								"settings":
 								{
-									"auto_name": "---",
-									"syntax": "Packages/YAML/YAML.tmLanguage",
-									"tab_size": 2,
-									"translate_tabs_to_spaces": true
-								},
-								"translation.x": 0.0,
-								"translation.y": 0.0,
-								"zoom_level": 1.0
-							},
-							"stack_index": 1,
-							"type": "text"
-						},
-						{
-							"buffer": 1,
-							"file": "roles/atlassian/tasks/main.yml",
-							"semi_transient": false,
-							"settings":
-							{
-								"buffer_size": 800,
-								"regions":
-								{
-								},
-								"selection":
-								[
-									[
-										800,
-										800
-									]
-								],
-								"settings":
-								{
-									"syntax": "Packages/YAML/YAML.tmLanguage",
-									"tab_size": 2,
-									"translate_tabs_to_spaces": true
+									"syntax": "Packages/Text/Plain text.tmLanguage"
 								},
 								"translation.x": 0.0,
 								"translation.y": 0.0,
@@ -580,11 +649,11 @@
 			{
 				"height": 0.0
 			},
-			"position": "0,0,0,0,0,109,1227,1655,2099,1920,2250",
-			"project": "/home/rothgar/projects/ansible-playbooks/apu/apu.sublime-project",
+			"position": "0,0,0,0,0,106,127,1655,999,1920,2160",
+			"project": "",
 			"replace":
 			{
-				"height": 64.0
+				"height": 46.0
 			},
 			"save_all_on_build": true,
 			"select_file":
@@ -627,14 +696,15 @@
 			"template_settings":
 			{
 			},
-			"window_id": 33,
-			"workspace_name": "/home/rothgar/projects/ansible-playbooks/atlassian/atlassian.sublime-workspace"
+			"window_id": 38,
+			"workspace_name": ""
 		}
 	],
 	"workspaces":
 	{
 		"recent_workspaces":
 		[
+			"/home/rothgar/projects/salt-states/salt.sublime-workspace",
 			"/home/rothgar/projects/ansible-playbooks/atlassian/atlassian.sublime-workspace",
 			"/home/rothgar/projects/ansible-playbooks/apu/apu.sublime-workspace",
 			"/home/rothgar/projects/ansible-playbooks/atlassian/ansible.sublime-workspace",

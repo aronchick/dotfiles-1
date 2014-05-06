@@ -1,7 +1,7 @@
 {
 	"ignored_packages":
 	[
-		"Vintage",
-		"Markdown"
+		"Markdown",
+		"Vintage"
 	]
 }

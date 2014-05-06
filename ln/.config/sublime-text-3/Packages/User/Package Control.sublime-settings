@@ -2,6 +2,8 @@
 	"installed_packages":
 	[
 		"MarkdownEditing",
-		"Pretty YAML"
+		"Pretty YAML",
+		"RailsCasts Colour Scheme",
+		"SaltStack-related syntax highlighting and snippets"
 	]
 }

@@ -1,15 +1,28 @@
 {
-	"licensed": true,
+	"licensed": false,
 	"packages":
 	[
-		"Package Control",
-		"Package Control",
-		"Package Control",
 		"MarkdownEditing",
 		"Package Control",
+		"RailsCasts Colour Scheme",
+		"SaltStack-related syntax highlighting and snippets",
 		"MarkdownEditing",
-		"Package Control"
+		"Package Control",
+		"RailsCasts Colour Scheme",
+		"MarkdownEditing",
+		"Package Control",
+		"RailsCasts Colour Scheme",
+		"SaltStack-related syntax highlighting and snippets",
+		"MarkdownEditing",
+		"Package Control",
+		"RailsCasts Colour Scheme",
+		"SaltStack-related syntax highlighting and snippets"
 	],
-	"startup_sec": 0.235849,
-	"time": 1397596986
+	"startup_sec": 0.219626,
+	"syntax":
+	{
+		"Plain text": 1,
+		"Shell-Unix-Generic": 2
+	},
+	"time": 1399307497
 }
