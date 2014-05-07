@@ -1,0 +1,60 @@
+# Elegance Colors module for Gnome Shell
+
+check_theme() {
+gsettings --schemadir "$schemadir" get org.gnome.shell.extensions.user-theme name | grep -iw "elegance-colors"
+}
+
+set_theme() {
+gsettings --schemadir "$schemadir" set org.gnome.shell.extensions.user-theme name 'elegance-colors'
+}
+
+apply_theme() {
+check_theme > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
+    show_info "Applying the theme"
+    set_theme
+fi
+}
+
+set_schemadir() {
+# Set the schemadir
+if [[ -f "$extensiondir/$schemafile" && -f "$extensiondir/gschemas.compiled" ]]; then
+    schemadir="$extensiondir"
+elif [[ -f "$glibschemas/$schemafile" && -f "$glibschemas/gschemas.compiled" ]]; then
+    schemadir="$glibschemas"
+else
+    return 1
+fi
+}
+
+init_module() {
+# Initialize variables
+shellversion=`gnome-shell --version | cut -f3 -d\  | cut -f1-2 -d.`
+template="$installdir/templates/gs-$shellversion"
+themedir="$HOME/.local/share/themes/elegance-colors"
+cssfile="gnome-shell.css"
+
+gtktheme=`gsettings get org.gnome.desktop.interface gtk-theme | sed -e "s/'//g"`
+wallpaper=`gsettings get org.gnome.desktop.background picture-uri | sed -e "s/'//g" -e "s/file:\/\///g" -e 's/\%20/\ /g'`
+
+glibschemas="/usr/share/glib-2.0/schemas"
+extensiondir="$HOME/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com/schemas"
+schemafile="org.gnome.shell.extensions.user-theme.gschema.xml"
+
+# Create link for compatibility in older versions
+if [[ ! -d "$HOME/.themes" ]]; then
+    ln -sf "$HOME/.local/share/themes" "$HOME/.themes"
+elif [[ ! -L "$HOME/.themes" ]]; then
+    ln -sf "$themedir" "$HOME/.themes/elegance-colors"
+fi
+
+# Verify if User themes extension is installed and set schemadir
+set_schemadir
+if [[ ! $? -eq 0 ]]; then
+    notify_err "User themes extension is not installed, please install from https://extensions.gnome.org/extension/19/user-themes/"
+    # Wait till the User theme extension is installed
+    until set_schemadir; do
+        sleep 5
+    done
+fi
+}
