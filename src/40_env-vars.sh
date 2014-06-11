@@ -10,9 +10,6 @@ if [ -d "$HOME/opt/aws" ] ; then
   export AWS_AMITOOLS_HOME=~/opt/aws/ami
 fi
 
-if [ $( ls ~/.ssh/id_aws-*.pem ) ] ; then
-  export EC2_PRIVATE_KEY=`ls ~/.ssh/id_aws-*.pem`
-fi
 #if [ -d "~/opt/aws/priv" ] ; then
 #  export AWS_CREDENTIAL_FILE=~/opt/aws/priv/credentialsfilepath.txt
 #fi

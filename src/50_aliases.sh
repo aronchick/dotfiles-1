@@ -1,6 +1,6 @@
 # Directory listing
 if [[ "$(type -P tree)" ]]; then
-  alias ll='tree --dirsfirst -aLpughDFiC 1'
+  alias ll='tree --dirsfirst -apughFiCD -L 1'
   alias lsd='ll -d'
 else
   alias ll='ls -alh'
@@ -10,6 +10,7 @@ fi
 #alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
+alias latr='ls -lAtr'
 
 # Easier navigation: .., ..., -
 alias ..='cd ..'
