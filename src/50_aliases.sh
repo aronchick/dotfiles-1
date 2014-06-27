@@ -23,10 +23,18 @@ alias df="df -h"
 alias du='du -ch'
 
 # Package management
-alias update="sudo apt-get -qq update && sudo apt-get upgrade"
-alias install="sudo apt-get install"
-alias remove="sudo apt-get remove"
-alias search="apt-cache search"
+if [[ -x /usr/sbin/apt-get ]]; then
+    alias update="sudo apt-get -qq update && sudo apt-get upgrade"
+    alias install="sudo apt-get install"
+    alias remove="sudo apt-get remove"
+    alias search="apt-cache search"
+fi
+if [[ -x /usr/bin/yum ]]; then
+    alias update="sudo yum update"
+    alias install="sudo yum install"
+    alias remove="sudo yum remove"
+    alias search="sudo yum search"
+fi
 
 # RDP shortcuts
 alias rdp='xfreerdp -u jlg -d apu --rfx -x 80 -g 1600x900 --disable-full-window-drag'
@@ -39,6 +47,7 @@ alias stfu="/dev/null"
 alias wtf="/dev/urandom"
 alias mount='mount | column -t'
 alias h='history'
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 # setup worktunnel in .ssh/config
 alias sshwt='ssh -A -t worktunnel ssh -A -t'

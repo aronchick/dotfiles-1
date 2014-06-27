@@ -10,6 +10,8 @@ if [ -d "$HOME/opt/aws" ] ; then
   export AWS_AMITOOLS_HOME=~/opt/aws/ami
 fi
 
+export CDPATH=".:~"
+
 #if [ -d "~/opt/aws/priv" ] ; then
 #  export AWS_CREDENTIAL_FILE=~/opt/aws/priv/credentialsfilepath.txt
 #fi

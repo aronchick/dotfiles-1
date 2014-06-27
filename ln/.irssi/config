@@ -5,28 +5,20 @@ servers = (
     address = "irc.freenode.net";
     chatnet = "Freenode";
     port = "6667";
-    autoconnect = "yes";
+    autoconnect = "no";
   },
-  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; }
+  {
+    address = "rothgar.yourhda.com";
+    chatnet = "znc";
+    port = "5555";
+    autoconnect = "yes";
+    user = "jgarr";
+  }
 );
 
 # ------NET COMANDS-------
 
 chatnets = {
-  IRCnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
-  };
-  EFNet = { 
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "1";
-  };
   Freenode = {
     type = "IRC";
     nick = "jgarr";
@@ -34,16 +26,15 @@ chatnets = {
     max_msgs = "3";
     max_whois = "1";
   };
+  znc = { type = "IRC"; };
 };
 
 # --------CHANNELS-------------
 
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-  { name = "#amahi"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#puppet"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#ansible"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#hangops"; chatnet = "Freenode"; autojoin = "Yes"; }
+  { name = "#python"; chatnet = "Freenode"; autojoin = "No"; }
 );
 
 # -------ALIAS-----------------
@@ -154,7 +145,6 @@ statusbar = {
       # list of items in statusbar in the display order
       items = {
         barstart = { priority = "100"; };
-        time = { };
         user = { };
         window = { };
         window_empty = { };
@@ -224,7 +214,7 @@ settings = {
   "fe-common/core" = { use_status_window = "yes"; };
 };
 ignores = (
-  { level = "ALL"; channels = ( "#puppet" ); },
+  #{ level = "ALL"; channels = ( "#puppet" ); },
   { level = "JOINS PARTS QUITS NICKS"; }
 );
 
@@ -235,27 +225,7 @@ hilights = ( { text = "Nick"; nick = "yes"; word = "no"; } );
 # ---------WINDOWS----------
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#amahi";
-        tag = "Freenode";
-      }
-    );
-  };
-  3 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#hangops";
-        tag = "Freenode";
-      }
-    );
-  };
-  5 = { name = "hilight"; sticky = "yes"; };
+  2 = { name = "hilight"; sticky = "yes"; };
 };
 mainwindows = {
   3 = { first_line = "6"; lines = "46"; };
