@@ -1,9 +1,11 @@
-# Ignore private .ssh stuff
+# Ignore private stuff
 ln/.ssh/authorized_keys
 ln/.ssh/id_*
 ln/.ssh/known_hosts
+*priv*
 
-# Misc files containing private data
+# Misc files containing private or meaningless data
 ln/.irssi/sasl.auth
-
-ln/.config/sumblime-text-3/*
+ln/.config/*
+.DS_Store
+away.log
