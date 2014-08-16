@@ -9,3 +9,4 @@ ln/.irssi/sasl.auth
 ln/.config/*
 .DS_Store
 away.log
+src/.zhistory
