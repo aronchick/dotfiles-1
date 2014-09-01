@@ -10,3 +10,6 @@ ln/.config/*
 .DS_Store
 away.log
 src/.z*
+
+# tmux plugins
+ln/.tmux/plugins/tmux*
