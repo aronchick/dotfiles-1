@@ -5,22 +5,25 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/vundle.vim/
+call vundle#begin()
 
 " vundle-ception
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Syntax highlighting etc
-Bundle 'puppetlabs/puppet-syntax-vim'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'chase/vim-ansible-yaml'
-Bundle 'gmarik/vim-markdown'
-Bundle 'saltstack/salt-vim'
+Plugin 'rodjek/vim-puppet'
+Plugin 'scrooloose/syntastic'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'gmarik/vim-markdown'
+Plugin 'saltstack/salt-vim'
 
 " Git integration
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()
 
 filetype plugin indent on
 
