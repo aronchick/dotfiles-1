@@ -45,3 +45,9 @@
     h = !git --no-pager log --graph -n 15
     a = !git --no-pager la -n 15    
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[color]
+	ui = auto
+[diff]
+	tool = kdiff3
+[rerere]
+	enabled = true

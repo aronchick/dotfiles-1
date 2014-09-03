@@ -16,6 +16,7 @@ Bundle 'puppetlabs/puppet-syntax-vim'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'gmarik/vim-markdown'
+Bundle 'saltstack/salt-vim'
 
 " Git integration
 Bundle 'tpope/vim-git'
@@ -54,7 +55,7 @@ set autoindent
 " Window Layout {{{
 
 set encoding=utf-8
-set relativenumber              "rnu:   show line numbers relative to the current line; <leader>u to toggle
+" set relativenumber              "rnu:   show line numbers relative to the current line; <leader>u to toggle
 set number                      "nu:    show the actual line number for the current line in relativenumber
 set showmode                    "smd:   shows current vi mode in lower left
 set cursorline                  "cul:   highlights the current line
