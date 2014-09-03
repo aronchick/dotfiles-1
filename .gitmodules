@@ -1,3 +1,6 @@
 [submodule "ln/.tmux/plugins/tpm"]
 	path = ln/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "src/.zprezto"]
+	path = src/.zprezto
+	url = https://github.com/rothgar/prezto.git
