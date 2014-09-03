@@ -13,3 +13,6 @@ src/.z*
 
 # tmux plugins
 ln/.tmux/plugins/tmux*
+
+# vim plugins
+ln/.vim/bundle/*
