@@ -12,8 +12,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Syntax highlighting etc
-Plugin 'rodjek/vim-puppet'
-Plugin 'scrooloose/syntastic'
+" Plugin 'rodjek/vim-puppet'
+Plugin 'puppetlabs/puppet-syntax-vim'
+" Plugin 'scrooloose/syntastic'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'gmarik/vim-markdown'
