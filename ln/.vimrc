@@ -19,6 +19,7 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'gmarik/vim-markdown'
 Plugin 'saltstack/salt-vim'
+Plugin 'scrooloose/nerdtree'
 
 " Git integration
 Plugin 'tpope/vim-git'
