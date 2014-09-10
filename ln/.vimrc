@@ -81,6 +81,17 @@ set viminfo='200                "vi:    For a nice, huuuuuge viminfo file
 set splitright                  "spr:   puts new vsplit windows to the right of the current
 set splitbelow                  "sb:    puts new split windows to the bottom of the current
 
+" NERDTree options
+" auto open NERDTree if vim run without args
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Toggle NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" close vim if only NERDTree pane is left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
 nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
