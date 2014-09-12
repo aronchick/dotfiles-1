@@ -7,6 +7,9 @@ ln/.ssh/known_hosts
 # Misc files containing private or meaningless data
 ln/.irssi/sasl.auth
 ln/.config/*
+*.pem
+*.autosave
+*.swp
 .DS_Store
 away.log
 src/.z*
