@@ -58,7 +58,9 @@ set autoindent
 " Window Layout {{{
 
 set encoding=utf-8
-set relativenumber              "rnu:   show line numbers relative to the current line; <leader>u to toggle
+if exists('+relativenumber')
+    set relativenumber              "rnu:   show line numbers relative to the current line; <leader>u to toggle
+endif
 set number                      "nu:    show the actual line number for the current line in relativenumber
 set showmode                    "smd:   shows current vi mode in lower left
 set cursorline                  "cul:   highlights the current line
