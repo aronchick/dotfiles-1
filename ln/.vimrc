@@ -105,6 +105,10 @@ syntax enable
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" Highlight the 81st column on wide lines
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 " fix dark blue color
 "hi comment ctermfg=blue
 set background=dark
