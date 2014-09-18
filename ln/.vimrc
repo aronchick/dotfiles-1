@@ -19,6 +19,7 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'gmarik/vim-markdown'
 Plugin 'saltstack/salt-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
 
 " Git integration
 Plugin 'tpope/vim-git'
@@ -76,7 +77,6 @@ set history=200                 "hi:    number of search patterns and ex command
 set viminfo='200                "vi:    For a nice, huuuuuge viminfo file
 
 " NERDtree options
-
 " auto open if no file sent as arg
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -84,6 +84,17 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 " Autoclose if only NERDtree is left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" CtrlP options
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" search directory
+" r=closest .git, .hg folder
+" a=only look in direct ancestors
+let g:ctrlp_working_path_mode = 'ra'
+" ignore files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " }}}
 
