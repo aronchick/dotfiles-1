@@ -30,6 +30,7 @@ call vundle#end()
 filetype plugin indent on
 
 " General {{{
+set nocp
 set nobackup
 set noswapfile
 set shiftwidth=4  " number of spaces to use for autoindenting
