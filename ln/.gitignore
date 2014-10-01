@@ -6,4 +6,6 @@
 .svn/
 CVS/
 tmp/
+vim/backup/*
+irssi/logs
 .DS_Store
