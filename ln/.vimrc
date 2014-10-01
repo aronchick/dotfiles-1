@@ -20,6 +20,7 @@ Plugin 'gmarik/vim-markdown'
 Plugin 'saltstack/salt-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'fatih/vim-go'
 
 " Git integration
 Plugin 'tpope/vim-git'
