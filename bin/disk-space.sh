@@ -87,4 +87,4 @@ else
         for DISK in $(mount 2> /dev/null | grep "^/dev/" | awk '{print $1}'); do
                 Print
         done
-fi​
+fi
