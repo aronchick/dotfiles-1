@@ -43,6 +43,13 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" press hh to escape insert mode  
+imap hh <Esc>
 
 " }}}
 
