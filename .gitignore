@@ -13,6 +13,7 @@ ln/.config/*
 .DS_Store
 away.log
 src/.z*
+*fnotify
 
 # tmux plugins
 ln/.tmux/plugins/tmux*
