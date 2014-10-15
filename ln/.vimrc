@@ -50,6 +50,7 @@ imap <right> <nop>
 
 " press hh to escape insert mode  
 imap hh <Esc>
+set backspace=indent,eol,start
 
 " }}}
 
