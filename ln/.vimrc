@@ -21,6 +21,7 @@ Plugin 'saltstack/salt-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-abolish'
 
 " Git integration
 Plugin 'tpope/vim-git'
