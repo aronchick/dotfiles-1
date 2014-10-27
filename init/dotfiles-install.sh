@@ -1,3 +1,5 @@
+#!/bin/bash
+# ^^ Run from bash assuming we don't already have zsh running
 # Warning, this file is opinionated for my directory structure.
 # Don't expect this to work for you out of the box!
 
@@ -20,7 +22,7 @@ if [ -d "${HOME}"/.dotfiles ]; then
     for DOT_FILE in $( ls -A "${HOME}"/.dotfiles/ln/ )
     do
         echo "linking ${DOT_FILE}"
-        ln -s "${HOME}"/"${DOT_FILE}" "${HOME}"/.dotfiles/ln/"${DOT_FILE}" 
+        ln -s "${HOME}"/.dotfiles/ln/"${DOT_FILE}" "${HOME}"/"${DOT_FILE}" 
     done
 fi
 
