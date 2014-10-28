@@ -28,8 +28,6 @@ servers = (
     chatnets = {
       Freenode = {
         type = "IRC";
-        nick = "jgarr";
-        autosendcmd = "/msg nickserv identify <PASSWORD> ;wait 2000";
         max_kicks = "4";
         max_msgs = "3";
         max_whois = "1";
@@ -212,19 +210,14 @@ servers = (
     # -----------SETTINGS------------
 
     settings = {
+      "fe-text" = { actlist_sort = "refnum"; };
       core = {
         real_name = "Justin Garrison";
-        user_name = "rothgar";
-        nick = "rothgar";
+        user_name = "jgarr";
+        nick = "= jgarr";
       };
-      "fe-text" = { actlist_sort = "refnum"; };
-      "fe-common/core" = { use_status_window = "yes"; };
+      "irc/core" = { alternate_nick = "= rothgar"; };
     };
-    ignores = (
-      { level = "ALL"; channels = ( "#puppet" ); },
-      { level = "JOINS PARTS QUITS NICKS"; }
-    );
-
     # ----------HILIGHTS-----------
 
     hilights = ( { text = "Nick"; nick = "yes"; word = "no"; } );
@@ -238,22 +231,19 @@ servers = (
       3 = { first_line = "6"; lines = "46"; };
       4 = { first_line = "1"; lines = "5"; };
     };
+  },
+  {
+    address = "chat.freenode.net";
+    chatnet = "freenode";
+    port = "6697";
+    use_ssl = "yes";
+    nick = "jgarr";
+    realname = "Justin Garrison";
+    ssl_cert = "~/.irssi/jgarr.pem";
+    ssl_verify = "no";
+    autoconnect = "yes";
   }
 );
-chatnets = {
-  freenode = { type = "IRC"; };
-  znc = { type = "IRC"; };
-  spotchat = { type = "IRC"; };
-  gnome = { type = "IRC"; };
-};
-settings = {
-  "fe-text" = { actlist_sort = "refnum"; };
-  core = {
-    real_name = "Justin Garrison";
-    user_name = "jgarriso";
-    nick = "jgarriso";
-  };
-};
 statusbar = {
   default = {
     window = {
@@ -272,3 +262,17 @@ statusbar = {
 };
 logs = { };
 ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
+settings = {
+  core = {
+    real_name = "Justin Garrison";
+    nick = "jgarr";
+    user_name = "jgarr";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+};
+hilights = ( { text = "jgarr"; nick = "yes"; word = "yes"; } );
+chatnets = {
+  freenode = { type = "IRC"; };
+  gnome = { type = "IRC"; };
+  spotchat = { type = "IRC"; };
+};
