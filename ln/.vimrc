@@ -50,6 +50,9 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" misc maps
+nmap , $p
+
 " press hh to escape insert mode  
 imap hh <Esc>
 set backspace=indent,eol,start
