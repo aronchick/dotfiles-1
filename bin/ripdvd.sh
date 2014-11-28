@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OUTPUT_DIR="/mnt/sandbox/rip/dvd"
+OUTPUT_DIR="/tmp/"
 SOURCE_DRIVE="/dev/sr0"
 HANDBRAKE_PRESET="AppleTV 2"
 EXTENSION="m4v"
