@@ -16,3 +16,6 @@
 [submodule "src/per-directory-history"]
 	path = src/per-directory-history
 	url = https://github.com/jimhester/per-directory-history.git
+[submodule "bin/gist.sh"]
+	path = bin/gist.sh
+	url = https://github.com/gmarik/gist.sh.git
