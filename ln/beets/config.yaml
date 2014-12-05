@@ -1,0 +1,18 @@
+# Automatically migrated from legacy .beetsconfig.
+
+directory: /mnt/local/music/
+library: /home/rothgar/Music/beetlibrary.blb
+plugins: fetchart embedart
+
+embedart:
+    compare_threshold: 50
+
+import:
+    move: true
+    copy: false
+    log: /home/rothgar/beetsimport.log
+
+paths:
+    default: $albumartist/$albumartist.$year.$album/$albumartist.$album.$track.$title
+    albumtype:soundtrack: soundtracks/$album/$artist.$album.$track.$title
+    comp: Various\ Artists/$album/$arstist.$album.$track.$title
