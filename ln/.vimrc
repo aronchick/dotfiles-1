@@ -23,6 +23,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-abolish'
 Plugin 'tope/vim-surround'
+Plugin 'godlygeek/tabular'
 
 " Git integration
 Plugin 'tpope/vim-git'
@@ -36,8 +37,8 @@ filetype plugin indent on
 set nocp
 set nobackup
 set noswapfile
-set shiftwidth=4  " number of spaces to use for autoindenting
-set tabstop=4     " a tab is four spaces
+set shiftwidth=2  " number of spaces to use for autoindenting
+set tabstop=2     " a tab is four spaces
 nmap <silent> ,/ :nohlsearch<CR>
 
 " force myself to learn vim "aarows"
