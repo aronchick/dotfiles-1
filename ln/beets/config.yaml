@@ -2,7 +2,7 @@
 
 directory: /mnt/local/music/
 library: /home/rothgar/Music/beetlibrary.blb
-plugins: fetchart embedart
+plugins: fetchart embedart duplicates
 
 embedart:
     compare_threshold: 50
