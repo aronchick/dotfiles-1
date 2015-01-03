@@ -1,0 +1,140 @@
+#-----------VARS----------------------
+
+export EDITOR='vim'
+export VISUAL='vim'
+export CDPATH='.:~'
+export GOPATH=$HOME
+# exported for per-directory-history
+export HISTORY_BASE="${ZDOTDIR}"/.dir_history
+export PATH="$HOME/.dotfiles/bin:$GOPATH/bin:$PATH"
+
+#------------ALIASES------------------
+
+# Directory listing
+
+alias ll='ls -AlFh'
+alias la='ls -A'
+alias l='ls -CF'
+alias latr='ls -lAtr'
+alias lla='ll -A'       
+alias l1='ls -1A'       # All files in 1 column
+
+# Easier navigation: .., ..., -
+alias ..='cd ..'
+alias ....='cd ../..'
+alias xxx='exit'
+
+# File size
+alias fs="stat -f '%z bytes'"
+alias df="df -h"
+alias du='du -ch'
+alias rpg="rpm -qa | grep"
+
+if (( $+commands[subscription-manager] )) ; then
+    alias sm="sudo subscription-manager"
+fi
+
+# MISC commands
+alias gtfo="/dev/null"
+alias stfu="/dev/null"
+alias wtf="/dev/urandom"
+alias mount='mount | column -t'
+alias h='history'
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias lvim='vim -c "normal '\''0"'
+alias mux='tmuxinator'
+alias sudo='sudo -s '
+alias v='vim'
+
+# docker
+alias d='docker'
+alias db='docker build'
+alias dr='docker run'
+
+# git aliases
+alias gamend='git commit --amend --no-edit'
+alias gg='git grep -in'
+alias gs='git st'
+alias ga='git add'
+alias gb='git branch'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# SSH aliases
+# setup worktunnel in .ssh/config
+alias sshwt='ssh -A -t worktunnel ssh -A -t'
+# setup hometunnel is .ssh/config
+alias sshht='ssh -A -t hometunnel ssh -A -t'
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+#------------FUNCTIONS----------------
+
+# apt-history
+function apt-history(){
+      case "$1" in
+        install)
+              cat /var/log/dpkg.log | grep 'install '
+              ;;
+        upgrade|remove)
+              cat /var/log/dpkg.log | grep $1
+              ;;
+        rollback)
+              cat /var/log/dpkg.log | grep upgrade | \
+                  grep "$2" -A10000000 | \
+                  grep "$3" -B10000000 | \
+                  awk '{print $4"="$5}'
+              ;;
+        *)
+              cat /var/log/dpkg.log
+              ;;
+      esac
+}
+
+# attach to a tmux session or start a new session if one doesn't exist
+function muxt() { tmux attach || tmux }
+# bind above function to Ctrl+t
+# ^q = pushline, \n = execute by entering a new line
+bindkey -s '\C-t' '^qmuxt\n'
+
+# Create a new directory and enter it
+function md() {
+  mkdir -p "$@" && cd "$@"
+}
+
+function show-cert() { sudo openssl x509 -text -in "$1"; }
+
+# SSH to a host when it becomes available
+function sshup() { while $(ping -c 1 ${1} | grep -qi unreachable); do printf %s "."; sleep 1; done && ssh "$1"; }
+
+# Set precmd for tmux
+case "$TERM" in
+    screen*)
+        precmd () {
+            print -Pn '\033k$(hostname)\033\\'
+        }
+    ;;
+esac
+
+# Backup funciton
+bu() { cp "$1" "$1".backup-`date +%y%m%d`; }
+
+if [[ -d "${ZDOTDIR}"/zsh.d ]]; then
+    for ZSH_FILE in $(ls -A "${ZDOTDIR}"/zsh.d/*.zsh); do
+        source "${ZSH_FILE}"
+    done
+fi
+
+command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
