@@ -19,3 +19,6 @@
 [submodule "bin/gist.sh"]
 	path = bin/gist.sh
 	url = https://github.com/gmarik/gist.sh.git
+[submodule "bin/bashreduce"]
+	path = bin/bashreduce
+	url = git@github.com:erikfrey/bashreduce.git
