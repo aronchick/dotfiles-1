@@ -21,4 +21,4 @@
 	url = https://github.com/gmarik/gist.sh.git
 [submodule "bin/bashreduce"]
 	path = bin/bashreduce
-	url = git@github.com:erikfrey/bashreduce.git
+	url = https://github.com/erikfrey/bashreduce.git
