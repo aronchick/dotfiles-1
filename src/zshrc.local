@@ -4,8 +4,6 @@ export EDITOR='vim'
 export VISUAL='vim'
 export CDPATH='.:~'
 export GOPATH=$HOME
-# exported for per-directory-history
-export HISTORY_BASE="${ZDOTDIR}"/.dir_history
 export PATH="$HOME/.dotfiles/bin:$GOPATH/bin:$PATH"
 
 #------------ALIASES------------------
@@ -79,6 +77,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# Key binds
+# Use Ctrl+r even if I'm using vi key bindings
+bindkey '^R' history-incremental-search-backward
 
 #------------FUNCTIONS----------------
 
