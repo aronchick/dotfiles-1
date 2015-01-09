@@ -13,9 +13,6 @@
 [submodule "bin/lastpass-cli"]
 	path = bin/lastpass-cli
 	url = https://github.com/lastpass/lastpass-cli.git
-[submodule "src/per-directory-history"]
-	path = src/per-directory-history
-	url = https://github.com/jimhester/per-directory-history.git
 [submodule "bin/gist.sh"]
 	path = bin/gist.sh
 	url = https://github.com/gmarik/gist.sh.git
