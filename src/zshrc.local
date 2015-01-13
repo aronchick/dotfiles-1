@@ -42,6 +42,7 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lvim='vim -c "normal '\''0"'
 alias mux='tmuxinator'
 alias sudo='sudo -s '
+alias ss='sudo'
 alias v='vim'
 
 # docker
