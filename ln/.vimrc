@@ -22,7 +22,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-abolish'
-Plugin 'tope/vim-surround'
+Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 
 " Git integration
