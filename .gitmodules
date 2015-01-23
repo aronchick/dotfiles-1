@@ -22,3 +22,6 @@
 [submodule "bin/pipework"]
 	path = bin/pipework
 	url = https://github.com/jpetazzo/pipework.git
+[submodule "bin/tmux-cssh"]
+	path = bin/tmux-cssh
+	url = https://github.com/dennishafemann/tmux-cssh.git
