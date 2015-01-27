@@ -131,6 +131,17 @@ case "$TERM" in
     ;;
 esac
 
+# bitch
+bitch() {
+  if [[ "${BUFFER}" == *" bitch" ]] && [[ "${BUFFER}" != su(do|)\ * ]]; then
+    BUFFER="sudo ${BUFFER% bitch}"
+  elif [[ "${BUFFER}" == "bitch" ]]; then
+    BUFFER="sudo !!"
+  fi
+  zle .accept-line
+}
+zle -N accept-line bitch
+
 # Backup funciton
 bu() { cp "$1" "$1".backup-`date +%y%m%d`; }
 
