@@ -136,7 +136,8 @@ bitch() {
   if [[ "${BUFFER}" == *" bitch" ]] && [[ "${BUFFER}" != su(do|)\ * ]]; then
     BUFFER="sudo ${BUFFER% bitch}"
   elif [[ "${BUFFER}" == "bitch" ]]; then
-    BUFFER="sudo !!"
+    LAST_CMD=$(fc -l -1)
+    BUFFER="sudo ${LAST_CMD#*  }"
   fi
   zle .accept-line
 }
