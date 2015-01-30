@@ -4,7 +4,7 @@ export EDITOR='vim'
 export VISUAL='vim'
 export CDPATH='.:~'
 export GOPATH=$HOME
-export PATH="$HOME/.dotfiles/bin:$GOPATH/bin:$PATH"
+export JAVA_HOME='/usr/lib/jvm/java'
 
 #------------ALIASES------------------
 
@@ -154,4 +154,5 @@ if [[ -d "${ZDOTDIR}"/zsh.d ]]; then
     done
 fi
 
+export PATH="$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
