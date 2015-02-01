@@ -49,6 +49,8 @@ alias v='vim'
 alias d='docker'
 alias db='docker build'
 alias dr='docker run'
+alias dpid="d inspect --format '{{ .State.Pid }}' "
+alias dip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 
 # git aliases
 alias gamend='git commit --amend --no-edit'
