@@ -5,6 +5,8 @@ export VISUAL='vim'
 export CDPATH='.:~'
 export GOPATH=$HOME
 export JAVA_HOME='/usr/lib/jvm/java'
+export WORKON_HOME=$HOME/.virtualenvs
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 #------------ALIASES------------------
 
@@ -152,6 +154,10 @@ if [[ -d "${ZDOTDIR}"/zsh.d ]]; then
     for ZSH_FILE in $(ls -A "${ZDOTDIR}"/zsh.d/*.zsh); do
         source "${ZSH_FILE}"
     done
+fi
+
+if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+  source "/usr/local/bin/virtualenvwrapper.sh"
 fi
 
 export PATH="$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
