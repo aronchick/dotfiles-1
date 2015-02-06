@@ -24,6 +24,7 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
+Plugin 'Raimondi/delimitMate'
 
 " Git integration
 Plugin 'tpope/vim-git'
