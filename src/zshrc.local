@@ -123,6 +123,20 @@ function md() {
 
 function show-cert() { sudo openssl x509 -text -in "$1"; }
 
+# remove host key for ssh
+function rm-sshkey() {
+  echo -e "\e[1;32m Matched Lines \e[0m"
+  sed -n "/$1/p" $HOME/.ssh/known_hosts
+  local CONFIRM=N
+  echo "Delete? (y/N): " 
+  read -n 1 CONFIRM
+  if [[ $CONFIRM == 'y' ]]; then
+    sed -i "/$1/d" $HOME/.ssh/known_hosts
+  else
+    printf "replace aborted"
+  fi
+}
+
 # SSH to a host when it becomes available
 function sshup() { while $(ping -c 1 ${1} | grep -qi unreachable); do printf %s "."; sleep 1; done && ssh "$1"; }
 
