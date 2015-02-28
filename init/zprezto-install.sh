@@ -1,7 +1,7 @@
 #!/bin/bash
 export ZDOTDIR=$HOME/.dotfiles/src
 
-setopt EXTENDED_GLOB
+shopt -s extglob
 for RCFILE in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md; do
   ln -s "${RCFILE}" "${ZDOTDIR:-$HOME}"/."${RCFILE:t}"
 done
