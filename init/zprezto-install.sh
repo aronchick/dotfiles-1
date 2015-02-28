@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 export ZDOTDIR=$HOME/.dotfiles/src
 
 setopt EXTENDED_GLOB
