@@ -4,7 +4,7 @@ export EDITOR='vim'
 export VISUAL='vim'
 export CDPATH='.:~'
 export GOPATH=$HOME
-export JAVA_HOME='/usr/lib/jvm/java'
+export JAVA_HOME='/usr/java/latest'
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
