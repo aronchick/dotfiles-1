@@ -93,6 +93,8 @@ fi
 # Key binds
 # Use Ctrl+r even if I'm using vi key bindings
 bindkey '^R' history-incremental-search-backward
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
 
 #------------FUNCTIONS----------------
 
