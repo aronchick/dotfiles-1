@@ -43,6 +43,7 @@ alias wtf="/dev/urandom"
 alias mount='mount | column -t'
 alias h='history'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias lsg="sudo lsof | grep"
 alias lvim='vim -c "normal '\''0"'
 alias mux='tmuxinator'
 alias ss='sudo'
