@@ -184,5 +184,5 @@ if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
 fi
 
-export PATH="$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
+export PATH="$HOME/.dotfiles/bin/packer:$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
