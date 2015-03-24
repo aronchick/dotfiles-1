@@ -135,11 +135,17 @@ function show-cert() { sudo openssl x509 -text -in "$1"; }
 
 # remove host key for ssh
 function rm-sshkey() {
-  echo -e "\e[1;32m Matched Lines \e[0m"
-  sed -n "/$1/p" $HOME/.ssh/known_hosts
+  MATCH=$(sed -n "/$1/p" $HOME/.ssh/known_hosts)
+  if [[ ! -z $MATCH ]]; then
+    echo -e "\e[1;32m Matched Lines \e[0m"
+    echo $MATCH
+  else
+    echo "No key found"
+    return
+  fi
   local CONFIRM=N
   echo "Delete? (y/N): " 
-  read -n 1 CONFIRM
+  read CONFIRM
   if [[ $CONFIRM == 'y' ]]; then
     sed -i "/$1/d" $HOME/.ssh/known_hosts
   else
