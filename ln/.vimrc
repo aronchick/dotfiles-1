@@ -42,6 +42,7 @@ filetype plugin indent on
 set nocp
 set nobackup
 set noswapfile
+set linebreak     " wrap lines on 'word' boundaries
 set shiftwidth=2  " number of spaces to use for autoindenting
 set tabstop=2     " a tab is four spaces
 nmap <silent> ,/ :nohlsearch<CR>
@@ -59,9 +60,21 @@ imap <right> <nop>
 " misc maps
 nmap , $p
 
+" Make these commonly mistyped commands still work
+command! WQ wq
+command! Wq wq
+command! Wqa wqa
+command! W w
+command! Q q
+
 " press hh to escape insert mode  
 imap hh <Esc>
 set backspace=indent,eol,start
+
+" Make the mouse work
+if has('mouse')
+  set mouse=a
+endif
 
 " }}}
 
