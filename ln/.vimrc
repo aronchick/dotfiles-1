@@ -13,22 +13,26 @@ Plugin 'gmarik/Vundle.vim'
 
 " Syntax highlighting etc
 Plugin 'puppetlabs/puppet-syntax-vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'scrooloose/syntastic'
 Plugin 'jnwhiteh/vim-golang'
-Plugin 'chase/vim-ansible-yaml'
 Plugin 'gmarik/vim-markdown'
 Plugin 'saltstack/salt-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-surround'
-Plugin 'godlygeek/tabular'
+
+" Management plugins
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
+Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
 
 " Git integration
-Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
 
 call vundle#end()
 
