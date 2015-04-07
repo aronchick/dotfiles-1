@@ -13,15 +13,6 @@
 [submodule "bin/lastpass-cli"]
 	path = bin/lastpass-cli
 	url = https://github.com/lastpass/lastpass-cli.git
-[submodule "bin/gist.sh"]
-	path = bin/gist.sh
-	url = https://github.com/gmarik/gist.sh.git
-[submodule "bin/bashreduce"]
-	path = bin/bashreduce
-	url = https://github.com/erikfrey/bashreduce.git
-[submodule "bin/pipework"]
-	path = bin/pipework
-	url = https://github.com/jpetazzo/pipework.git
 [submodule "bin/tmux-cssh"]
 	path = bin/tmux-cssh
 	url = https://github.com/dennishafemann/tmux-cssh.git
