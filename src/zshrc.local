@@ -8,6 +8,10 @@ export JAVA_HOME='/usr/java/latest'
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
+#------------OPTIONS------------------
+
+setopt DVORAK # use dvorak keyboard layout for misspelled suggestions
+
 #------------ALIASES------------------
 
 # Directory listing
