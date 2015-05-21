@@ -16,6 +16,3 @@
 [submodule "bin/tmux-cssh"]
 	path = bin/tmux-cssh
 	url = https://github.com/dennishafemann/tmux-cssh.git
-[submodule "z"]
-	path = z
-	url = https://github.com/rupa/z
