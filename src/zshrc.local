@@ -50,7 +50,7 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lsg="sudo lsof | grep"
 alias lvim='vim -c "normal '\''0"'
 alias mux='tmuxinator'
-alias ss='sudo'
+alias ss='sudo '
 alias v='vim'
 alias lmsg='sudo less +F /var/log/messages'
 alias dmsg='less +F /var/log/dmesg'
@@ -136,6 +136,8 @@ bindkey -s '\C-t' '^qmuxt\n'
 function md() {
   mkdir -p "$@" && cd "$@"
 }
+
+function extract-rpm() { rpm2cpio "$1" | cpio -idmv; }
 
 function show-cert() { sudo openssl x509 -text -in "$1"; }
 
