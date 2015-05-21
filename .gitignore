@@ -21,3 +21,6 @@ ln/.tmux/plugins/tmux*
 
 # vim plugins
 ln/.vim/bundle/*
+
+# bin files
+bin/ec2*
