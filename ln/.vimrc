@@ -29,6 +29,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
+Plugin 'yggdroot/indentLine'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
@@ -57,6 +58,16 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" pane resizing
+map <silent> <A-h> <C-w><
+map <silent> <A-j> <C-W>-
+map <silent> <A-k> <C-W>+
+map <silent> <A-l> <C-w>>
+
+" Maps Alt-[s.v] to horizontal and vertical split respectively
+map <silent> <A-s> :split<CR>
+map <silent> <A-v> :vsplit<CR>
+
 " misc maps
 nmap , $p
 
@@ -68,7 +79,7 @@ command! W w
 command! Q q
 
 " press hh to escape insert mode  
-imap hh <Esc>
+imap uu <Esc>
 set backspace=indent,eol,start
 
 " Make the mouse work
