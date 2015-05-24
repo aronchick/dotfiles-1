@@ -30,6 +30,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'yggdroot/indentLine'
+Plugin 'rking/ag.vim'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
