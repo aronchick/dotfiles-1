@@ -60,11 +60,11 @@ alias -g S='| sort'
 alias -g G='| grep'
 
 # docker
-alias d='docker'
-alias db='docker build'
-alias dr='docker run'
-alias dpid="d inspect --format '{{ .State.Pid }}' "
-alias dip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
+alias dk='docker'
+alias dkb='docker build'
+alias dkr='docker run'
+alias dkpid="d inspect --format '{{ .State.Pid }}' "
+alias dkip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 
 # git aliases
 # More set in zprezto
