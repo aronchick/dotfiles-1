@@ -3,8 +3,12 @@
 WARN="This file is opinionated for my directory structure.\nDon't expect this to work for you out of the box!\n"
 
 printf "${WARN}"
-printf "Continue? (y/n): "
-read CONT
+
+# this doesn't work when automated
+#printf "Continue? (y/n): "
+#read CONT
+CONT=y
+
 # run this command as is and .zprezto will be cloned to your home directory
 # run with ZDOTDIR=/path/you/want dotfiles-install.sh
 # to clone prezto to a different folder
