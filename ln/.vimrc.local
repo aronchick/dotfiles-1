@@ -1,3 +1,0 @@
-" highlight the 81st column if text goes too far
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
