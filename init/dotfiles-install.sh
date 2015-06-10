@@ -13,23 +13,23 @@ CONT=y
 # run with ZDOTDIR=/path/you/want dotfiles-install.sh
 # to clone prezto to a different folder
 
+DOTDIR="${DOTFILESDIR:-${HOME}/.dotfiles}"
+ZDIR="${ZDOTDIR:-${HOME}/.dotfiles/src/.zprezto}"
+
 if [[ $CONT == "y" ]]; then
   # first we need to put the zshenv in place to not clutter ~/ too much
-  if [ -d "${HOME}"/.dotfiles/src/.zprezto ]
+  if [ -d ${ZDIR} ]
   then
       echo "linking zshenv"
-      ln -s "${HOME}"/.dotfiles/src/.zprezto/runcoms/zshenv "${HOME}"/.zshenv
+      ln -s ${ZDIR}/runcoms/zshenv "${HOME}"/.zshenv
   else
-      git clone --recurse https://github.com/rothgar/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+      git clone --recurse https://github.com/rothgar/prezto.git "${ZDIR}"
   fi
   
-  source "${HOME}"/.zshenv
-  
-  if [ -d "${HOME}"/.dotfiles ]; then
-      for DOT_FILE in $( ls -A "${HOME}"/.dotfiles/ln/ )
+  if [ -d "${DOTDIR}" ]; then
+    for DOT_FILE in $( ls -A "${DOTDIR}"/ln )
       do
-          echo "linking ${DOT_FILE}"
-          ln -s "${HOME}"/.dotfiles/ln/"${DOT_FILE}" "${HOME}"/"${DOT_FILE}" 
+          ln -s "${DOTDIR}"/ln/"${DOT_FILE}" "${HOME}"/"${DOT_FILE}" 
       done
   fi
   # update and install vim plugins
