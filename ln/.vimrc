@@ -8,10 +8,13 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
+Bundle 'wakatime/vim-wakatime'
+
 " vundle-ception
 Plugin 'gmarik/Vundle.vim'
 
 " Syntax highlighting etc
+Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'chase/vim-ansible-yaml'
@@ -27,6 +30,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-repeat'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'yggdroot/indentLine'
@@ -71,6 +75,15 @@ map <silent> <A-v> :vsplit<CR>
 
 " misc maps
 nmap , $p
+" Jump to end of paste
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" Leader shortcuts
+let mapleader = "\<Space>"
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
 
 " Make these commonly mistyped commands still work
 command! WQ wq
@@ -78,9 +91,10 @@ command! Wq wq
 command! Wqa wqa
 command! W w
 command! Q q
+map q: :q
 
-" press hh to escape insert mode  
-imap uu <Esc>
+" press jj to escape insert mode  
+imap jj <Esc>
 set backspace=indent,eol,start
 
 " Make the mouse work
@@ -142,6 +156,18 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
+
 " }}}
 
 " Multi-buffer/window/tab editing {{{
@@ -172,3 +198,5 @@ call matchadd('ColorColumn', '\%81v', 100)
 " fix dark blue color
 "hi comment ctermfg=blue
 set background=dark
+
+
