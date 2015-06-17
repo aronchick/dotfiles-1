@@ -137,6 +137,9 @@ function md() {
   mkdir -p "$@" && cd "$@"
 }
 
+# Search history with h $arg or just type h for full history
+h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
+
 function extract-rpm() { rpm2cpio "$1" | cpio -idmv; }
 
 function show-cert() { sudo openssl x509 -text -in "$1"; }
