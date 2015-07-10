@@ -209,7 +209,7 @@ restart-pulp() {
 
 # Curl to bash
 c2b() {
-  curl -L -k ${1} | sudo bash
+  curl -L ${1} | sudo bash
 }
 export PATH="$HOME/.dotfiles/bin/packer:$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
