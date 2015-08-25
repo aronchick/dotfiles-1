@@ -70,11 +70,15 @@ alias -g S='| sort'
 alias -g G='| grep'
 
 # docker
-alias dk='docker'
-alias dkb='docker build'
-alias dkr='docker run'
-alias dkpid="d inspect --format '{{ .State.Pid }}' "
-alias dkip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
+alias d='docker'
+alias dl='docker logs -f'
+alias db='docker build'
+alias dm='docker-machine'
+alias ds='docker-swarm'
+alias dc='docker-compose'
+alias dr='docker run'
+alias dpid="d inspect --format '{{ .State.Pid }}' "
+alias dip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 
 # *ctl
 alias sc='systemctl'
@@ -124,6 +128,17 @@ bindkey -M vicmd j vi-down-line-or-history
 
 #------------FUNCTIONS----------------
 
+# docker functions
+function de() { docker exec -it "$@" /bin/bash; }
+
+dme() { eval "$(docker-machine env $1)"; }
+dmes() { eval "$(docker-machine env --swarm $1)"; }
+dmip() { export DOCKER_MACHINE_IP=`dm ip $DOCKER_MACHINE_NAME`; echo $DOCKER_MACHINE_IP; }
+
+drm() { docker rm -v $(docker ps -aq -f status=exited); }
+drmf() { docker rm -f -v $(docker ps -aq); }
+drmi() { docker rmi $(docker images -q -f dangling=true); }
+
 # apt-history
 function apt-history(){
       case "$1" in
@@ -157,7 +172,15 @@ function md() {
 }
 
 # Search history with h $arg or just type h for full history
-#h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
+function h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
+
+function vncc() { vncviewer "${1}":1 & }
+
+# print yum environment variables
+function printyumenv() { python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'}
+
+# start a vnc server on :99 using display :0
+function start-vnc0() { x11vnc -display :0 -rfbport 5999 -repeat -noncache -q -bg & }
 
 function extract-rpm() { rpm2cpio "$1" | cpio -idmv; }
 
