@@ -8,8 +8,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-Bundle 'wakatime/vim-wakatime'
-
 " vundle-ception
 Plugin 'gmarik/Vundle.vim'
 
