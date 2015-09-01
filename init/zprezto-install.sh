@@ -1,10 +1,12 @@
 #!/bin/bash
-export ZDOTDIR=$HOME/.dotfiles/src
+
+RUN_USER=${SUDO_USER:-${USER}}
+ZDIR=${ZDOTDIR:-/home/${RUN_USER}/.dotfiles/src}
 
 shopt -s extglob
-for RCFILE in $( ls -A "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/ ); do
-  ln -s "${ZDOTDIR}"/.zprezto/runcoms/"${RCFILE}" "${ZDOTDIR:-$HOME}"/."${RCFILE:t}"
+for RCFILE in $( ls -A "${ZDIR}"/.zprezto/runcoms/ ); do
+  ln -s "${ZDIR}"/.zprezto/runcoms/"${RCFILE}" "${ZDIR}"/."${RCFILE:t}"
 done
 
 # move the symlink we just made to ~/ because that's the only place it works
-mv "${ZDOTDIR:-$HOME}"/.zshenv ~/.zshenv
+mv "${ZDIR}"/.zshenv ~/.zshenv

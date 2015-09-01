@@ -1,16 +1,27 @@
 #-----------VARS----------------------
 
+export SHELL='/bin/zsh'
 export EDITOR='vim'
 export VISUAL='vim'
 export CDPATH='.:~'
 export GOPATH=$HOME
+export RSYNC_RSH=ssh
 export JAVA_HOME='/usr/java/latest'
+export HISTFILE=$HOME/.dotfiles/src/.zhistory
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 #------------OPTIONS------------------
 
-setopt DVORAK # use dvorak keyboard layout for misspelled suggestions
+setopt DVORAK                    # use dvorak keyboard layout for misspelled suggestions
+setopt extended_glob             # more glob features
+setopt append_history            # Append to history on exit, don't overwrite it.
+setopt extended_history          # Save timestamps with history
+setopt hist_no_store             # Don't store history commands
+setopt hist_save_no_dups         # Don't save duplicate history entries
+setopt hist_ignore_all_dups      # Ignore old command duplicates (in current session)
+setopt no_inc_append_history
+setopt no_share_history
 
 #------------ALIASES------------------
 
@@ -45,7 +56,6 @@ alias gtfo="/dev/null"
 alias stfu="/dev/null"
 alias wtf="/dev/urandom"
 alias mount='mount | column -t'
-alias h='history'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lsg="sudo lsof | grep"
 alias lvim='vim -c "normal '\''0"'
@@ -65,6 +75,10 @@ alias dkb='docker build'
 alias dkr='docker run'
 alias dkpid="d inspect --format '{{ .State.Pid }}' "
 alias dkip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
+
+# *ctl
+alias sc='systemctl'
+alias jc='journalctl'
 
 # git aliases
 # More set in zprezto
@@ -102,6 +116,11 @@ fi
 bindkey '^R' history-incremental-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
+# ^S and ^Q cause problems and I don't use them. Disable stty stop.
+stty stop ""
+stty start ""
+bindkey -M vicmd k vi-up-line-or-history
+bindkey -M vicmd j vi-down-line-or-history
 
 #------------FUNCTIONS----------------
 
@@ -138,7 +157,7 @@ function md() {
 }
 
 # Search history with h $arg or just type h for full history
-h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
+#h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
 
 function extract-rpm() { rpm2cpio "$1" | cpio -idmv; }
 
@@ -209,7 +228,7 @@ restart-pulp() {
 
 # Curl to bash
 c2b() {
-  curl -L -k ${1} | sudo bash
+  curl -L ${1} | sudo bash
 }
 export PATH="$HOME/.dotfiles/bin/packer:$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
