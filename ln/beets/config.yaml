@@ -3,6 +3,7 @@
 directory: /mnt/local/music/
 library: /home/rothgar/Music/beetlibrary.blb
 plugins: fetchart embedart duplicates
+max_filename_length: 256
 
 embedart:
     compare_threshold: 50
