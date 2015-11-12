@@ -15,5 +15,5 @@ import:
 
 paths:
     default: $albumartist/$albumartist.$year.$album/$albumartist.$album.$track.$title
-    albumtype:soundtrack: soundtracks/$album/$artist.$album.$track.$title
+    albumtype:soundtrack: soundtracks/$album/$track.$album.$artist.$title
     comp: Various\ Artists/$album/$arstist.$album.$track.$title
