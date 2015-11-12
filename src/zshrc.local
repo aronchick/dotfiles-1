@@ -45,7 +45,7 @@ alias :q='exit'
 alias fs="stat -f '%z bytes'"
 alias df="df -h"
 alias du='du -ch'
-alias rpg="rpm -qa | grep"
+alias rpg="rpm -qa | grep -i"
 
 if (( $+commands[subscription-manager] )) ; then
     alias sm="sudo subscription-manager"
