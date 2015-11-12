@@ -76,6 +76,10 @@ alias dkr='docker run'
 alias dkpid="d inspect --format '{{ .State.Pid }}' "
 alias dkip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 
+# *ctl
+alias sc='systemctl'
+alias jc='journalctl'
+
 # git aliases
 # More set in zprezto
 alias gamend='git commit --amend --no-edit'
@@ -153,7 +157,7 @@ function md() {
 }
 
 # Search history with h $arg or just type h for full history
-h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
+#h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
 
 function extract-rpm() { rpm2cpio "$1" | cpio -idmv; }
 
