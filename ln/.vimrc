@@ -82,8 +82,12 @@ nnoremap <silent> p p`]
 
 " Leader shortcuts
 let mapleader = "\<Space>"
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w  :w<CR>
+nnoremap <Leader>an :set nonumber! norelativenumber!<CR>  " toggle all numbers
+nnoremap <Leader>n  :set nonumber!<CR>
+nnoremap <Leader>rn :set norelativenumber!<CR>
+nnoremap <Leader>c  :noh<CR>                              " clear highlighting
+nnoremap <Leader>p  :set paste!<CR>                       " toggle paste
 
 " Make these commonly mistyped commands still work
 command! WQ wq
