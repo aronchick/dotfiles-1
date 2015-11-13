@@ -59,7 +59,6 @@ alias mount='mount | column -t'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lsg="sudo lsof | grep"
 alias lvim='vim -c "normal '\''0"'
-alias mux='tmuxinator'
 alias ss='sudo '
 alias v='vim'
 alias lmsg='sudo less +F /var/log/messages'
@@ -68,6 +67,10 @@ alias -g H='| head'
 alias -g L='| less'
 alias -g S='| sort'
 alias -g G='| grep'
+alias df="df -h"
+alias du='du -ch'
+alias rpg="rpm -qa | grep"
+alias ylist='yum list --showduplicates'
 
 # docker
 alias d='docker'
@@ -176,6 +179,8 @@ function h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; 
 
 function vncc() { vncviewer "${1}":1 & }
 
+function shr() { ssh root@"${1}" }
+
 # print yum environment variables
 function printyumenv() { python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'}
 
@@ -208,15 +213,6 @@ function rm-sshkey() {
 
 # SSH to a host when it becomes available
 function sshup() { while $(ping -c 1 ${1} | grep -qi unreachable); do printf %s "."; sleep 1; done && ssh "$1"; }
-
-# Set precmd for tmux
-case "$TERM" in
-    screen*)
-        precmd () {
-            print -Pn '\033k$(hostname)\033\\'
-        }
-    ;;
-esac
 
 # bitch
 bitch() {
