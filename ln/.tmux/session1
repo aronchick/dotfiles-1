@@ -1,6 +1,3 @@
 #session1
-new -S default-session -n irc irssi
+new -n weechat weechat
 neww -n shell
-splitw -v -p 50 -t 0
-selectw -t 1
-selectp -t 0
