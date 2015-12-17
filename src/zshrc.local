@@ -71,6 +71,7 @@ alias df="df -h"
 alias du='du -ch'
 alias rpg="rpm -qa | grep"
 alias ylist='yum list --showduplicates'
+alias ygroups='yum groupinfo '*' | less +/'
 
 # docker
 alias d='docker'
