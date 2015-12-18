@@ -85,8 +85,9 @@ alias dpid="d inspect --format '{{ .State.Pid }}' "
 alias dip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 
 # *ctl
-alias sc='systemctl'
-alias jc='journalctl'
+alias sc='sudo systemctl'
+alias jc='sudo journalctl'
+alias mc='sudo machinectl'
 
 # git aliases
 # More set in zprezto
