@@ -59,7 +59,6 @@ alias mount='mount | column -t'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lsg="sudo lsof | grep"
 alias lvim='vim -c "normal '\''0"'
-alias ss='sudo '
 alias v='vim'
 alias lmsg='sudo less +F /var/log/messages'
 alias dmsg='less +F /var/log/dmesg'
