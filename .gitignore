@@ -1,4 +1,5 @@
 # Ignore private stuff
+ln/.tmux/resurrect/
 ln/.ssh/authorized_keys
 ln/.ssh/id_*
 ln/.ssh/known_hosts
