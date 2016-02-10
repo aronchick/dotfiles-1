@@ -215,6 +215,10 @@ function rm-sshkey() {
 # SSH to a host when it becomes available
 function sshup() { while $(ping -c 1 ${1} | grep -qi unreachable); do printf %s "."; sleep 1; done && ssh "$1"; }
 
+# Most important functions
+flip() { echo "（╯°□°）╯ ┻━┻"; }
+shrug() { echo "¯\_(ツ)_/¯"; }
+
 # bitch
 bitch() {
   if [[ "${BUFFER}" == *" bitch" ]] && [[ "${BUFFER}" != su(do|)\ * ]]; then
