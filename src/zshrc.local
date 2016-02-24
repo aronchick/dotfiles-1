@@ -181,6 +181,7 @@ function h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; 
 function vncc() { vncviewer "${1}":1 & }
 
 function shr() { ssh root@"${1}" }
+function shnr() { sshno root@"${1}" }
 
 # print yum environment variables
 function printyumenv() { python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'}
