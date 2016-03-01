@@ -168,7 +168,7 @@ function apt-history(){
 function muxt() { tmux attach || tmux }
 # bind above function to Ctrl+t
 # ^q = pushline, \n = execute by entering a new line
-bindkey -s '\C-t' '^qmuxt\n'
+bindkey -s '^[t' '^qmuxt\n'
 
 # Create a new directory and enter it
 function md() {
@@ -218,6 +218,10 @@ function sshup() { while $(ping -c 1 ${1} | grep -qi unreachable); do printf %s 
 # Most important functions
 flip() { echo "（╯°□°）╯ ┻━┻"; }
 shrug() { echo "¯\_(ツ)_/¯"; }
+
+insert_sudo () { zle beginning-of-line; zle -U "sudo " }
+zle -N insert-sudo insert_sudo
+bindkey "^[s" insert-sudo
 
 # bitch
 bitch() {
