@@ -3,7 +3,7 @@
 export SHELL='/bin/zsh'
 export EDITOR='vim'
 export VISUAL='vim'
-export CDPATH='.:~'
+export CDPATH='.:~:~/src/'
 export GOPATH=$HOME
 export RSYNC_RSH=ssh
 export JAVA_HOME='/usr/java/latest'
