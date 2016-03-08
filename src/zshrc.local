@@ -71,13 +71,13 @@ alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
 
 # docker
-alias d='docker'
-alias dl='docker logs -f'
-alias db='docker build'
+alias d='sudo docker'
+alias dl='d logs -f'
+alias db='d build'
 alias dm='docker-machine'
 alias ds='docker-swarm'
 alias dc='docker-compose'
-alias dr='docker run'
+alias dr='d run'
 alias dpid="d inspect --format '{{ .State.Pid }}' "
 alias dip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 
