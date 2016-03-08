@@ -15,13 +15,11 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 setopt DVORAK                    # use dvorak keyboard layout for misspelled suggestions
 setopt extended_glob             # more glob features
-setopt append_history            # Append to history on exit, don't overwrite it.
 setopt extended_history          # Save timestamps with history
 setopt hist_no_store             # Don't store history commands
 setopt hist_save_no_dups         # Don't save duplicate history entries
 setopt hist_ignore_all_dups      # Ignore old command duplicates (in current session)
-setopt no_inc_append_history
-setopt no_share_history
+setopt inc_append_history        # Append history immediately
 
 #------------ALIASES------------------
 
