@@ -62,7 +62,6 @@ alias lmsg='sudo less +F /var/log/messages'
 alias dmsg='less +F /var/log/dmesg'
 alias -g H='| head'
 alias -g L='| less'
-alias -g S='| sort'
 alias -g G='| grep'
 alias df="df -h"
 alias du='du -ch'
