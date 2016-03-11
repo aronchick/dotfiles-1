@@ -69,6 +69,7 @@ alias du='du -ch'
 alias rpg="rpm -qa | grep"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
+alias S="sudo "
 
 # docker
 alias d='sudo docker'
