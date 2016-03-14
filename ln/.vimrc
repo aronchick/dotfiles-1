@@ -100,10 +100,8 @@ map q: :q
 imap jj <Esc>
 set backspace=indent,eol,start
 
-" Make the mouse work
-if has('mouse')
-  set mouse=a
-endif
+" Make the mouse work in normal and visual mode
+set mouse=nv
 
 " }}}
 
@@ -184,15 +182,13 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 " }}}
 
-set mouse=                      "       Disable mouse control for console
-
 syntax enable
 
 " set .md as markdown without a plugin
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
+cmap W w !sudo tee > /dev/null %
 
 " Highlight the 81st column on wide lines
 highlight ColorColumn ctermbg=magenta
@@ -202,4 +198,20 @@ call matchadd('ColorColumn', '\%81v', 100)
 "hi comment ctermfg=blue
 set background=dark
 
+set virtualedit=onemore " Allow the cursor to move just past the end of the line
+set gdefault " The substitute flag g is on
+let &showbreak="\u21aa " " Show a left arrow when wrapping text
 
+""" Prevent lag when hitting escape
+set ttimeoutlen=0
+set timeoutlen=1000 
+au InsertEnter * set timeout
+au InsertLeave * set notimeout
+
+function! ToggleColorColumn()
+    if &colorcolumn != 0
+        windo let &colorcolumn = 0
+    else
+        windo let &colorcolumn = 80
+    endif
+endfunction
