@@ -1,8 +1,7 @@
 # Ignore private stuff
 ln/.tmux/resurrect/
-ln/.ssh/authorized_keys
-ln/.ssh/id_*
-ln/.ssh/known_hosts
+ln/.ssh/*
+ln/.ssh/assh.d/*
 *priv*
 
 # Misc files containing private or meaningless data
