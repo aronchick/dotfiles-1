@@ -86,6 +86,7 @@ nnoremap <Leader>an :set nonumber! norelativenumber!<CR>  " toggle all numbers
 nnoremap <Leader>n  :set nonumber!<CR>
 nnoremap <Leader>rn :set norelativenumber!<CR>
 nnoremap <Leader>c  :noh<CR>                              " clear highlighting
+nnoremap <Leader>l :IndentLinesToggle<CR> :set nonumber! norelativenumber!<CR>
 nnoremap <Leader>p  :set paste!<CR>                       " toggle paste
 
 " Make these commonly mistyped commands still work
@@ -120,9 +121,6 @@ set autoindent
 " Window Layout {{{
 
 set encoding=utf-8
-if exists('+relativenumber')
-    set relativenumber              "rnu:   show line numbers relative to the current line; <leader>u to toggle
-endif
 set number                      "nu:    show the actual line number for the current line in relativenumber
 set showmode                    "smd:   shows current vi mode in lower left
 set cursorline                  "cul:   highlights the current line
@@ -198,6 +196,7 @@ call matchadd('ColorColumn', '\%81v', 100)
 "hi comment ctermfg=blue
 set background=dark
 
+let delimitMate_expand_cr = 1     " Enable expansions for delimitMate
 set virtualedit=onemore " Allow the cursor to move just past the end of the line
 set gdefault " The substitute flag g is on
 let &showbreak="\u21aa " " Show a left arrow when wrapping text
