@@ -1,6 +1,6 @@
 # Automatically migrated from legacy .beetsconfig.
 
-directory: /mnt/local/music/
+directory: /mnt/samba/music/
 library: /home/rothgar/Music/beetlibrary.blb
 plugins: fetchart embedart duplicates
 max_filename_length: 256
@@ -14,6 +14,6 @@ import:
     log: /home/rothgar/beetsimport.log
 
 paths:
-    default: $albumartist/$albumartist.$year.$album/$albumartist.$album.$track.$title
+    default: $albumartist - $album/$track - $title
     albumtype:soundtrack: soundtracks/$album/$track.$album.$artist.$title
     comp: Various\ Artists/$album/$arstist.$album.$track.$title

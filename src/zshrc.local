@@ -69,6 +69,7 @@ alias rpg="rpm -qa | grep"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
 alias S="sudo "
+alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
 
 # docker
 alias d='sudo docker'
