@@ -135,6 +135,9 @@ set history=200                 "hi:    number of search patterns and ex command
                                 "       (also used by viminfo below for /, :, and @ options)
 set viminfo='200                "vi:    For a nice, huuuuuge viminfo file
 
+" Ag options
+let g:ag_working_path_mode="r"  " Always search from project root
+
 " NERDtree options
 " auto open if no file sent as arg
 autocmd StdinReadPre * let s:std_in=1
