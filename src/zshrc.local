@@ -260,3 +260,15 @@ c2b() {
 }
 export PATH="$HOME/.dotfiles/bin/packer:$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [[ -d $HOME/bin/google-cloud-sdk ]]; then
+  source '/home/jgarr/bin/google-cloud-sdk/path.zsh.inc'
+fi
+
+# gcloud command completion
+if [[ -d $HOME/src/gcloud-zsh-completion ]]; then
+  fpath=($HOME/src/gcloud-zsh-completion/src/ $fpath)
+  autoload -U compinit compdef
+  compinit
+fi
