@@ -86,6 +86,7 @@ alias dip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 alias sc='sudo systemctl'
 alias jc='sudo journalctl'
 alias mc='sudo machinectl'
+alias kc='kubectl'
 
 # git aliases
 # More set in zprezto
