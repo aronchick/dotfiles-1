@@ -78,7 +78,7 @@ alias du='du -ch'
 alias rpg="rpm -qa | grep"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
-alias s="SHELL=/bin/zsh sudo -sE "
+alias s="SHELL=/bin/zsh sudo -s "
 alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
 
 # docker
