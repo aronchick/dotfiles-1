@@ -46,7 +46,7 @@ alias du='du -ch'
 alias rpg="rpm -qa | grep -i"
 
 if (( $+commands[subscription-manager] )) ; then
-    alias sm="sudo subscription-manager"
+    alias sm="s subscription-manager"
 fi
 
 # MISC commands
@@ -55,10 +55,10 @@ alias stfu="/dev/null"
 alias wtf="/dev/urandom"
 alias mount='mount | column -t'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-alias lsg="sudo lsof | grep"
+alias lsg="s lsof | grep"
 alias lvim='vim -c "normal '\''0"'
 alias v='vim'
-alias lmsg='sudo less +F /var/log/messages'
+alias lmsg='s less +F /var/log/messages'
 alias dmsg='less +F /var/log/dmesg'
 alias -g H='| head'
 alias -g L='| less'
@@ -68,11 +68,11 @@ alias du='du -ch'
 alias rpg="rpm -qa | grep"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
-alias S="sudo "
+alias s="SHELL=/bin/zsh sudo -sE "
 alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
 
 # docker
-alias d='sudo docker'
+alias d='s docker'
 alias dl='d logs -f'
 alias db='d build'
 alias dm='docker-machine'
@@ -83,9 +83,9 @@ alias dpid="d inspect --format '{{ .State.Pid }}' "
 alias dip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 
 # *ctl
-alias sc='sudo systemctl'
-alias jc='sudo journalctl'
-alias mc='sudo machinectl'
+alias sc='s systemctl'
+alias jc='s journalctl'
+alias mc='s machinectl'
 alias kc='kubectl'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -182,7 +182,7 @@ function start-vnc0() { x11vnc -display :0 -rfbport 5999 -repeat -noncache -q -b
 
 function extract-rpm() { rpm2cpio "$1" | cpio -idmv; }
 
-function show-cert() { sudo openssl x509 -text -in "$1"; }
+function show-cert() { s openssl x509 -text -in "$1"; }
 
 # remove host key for ssh
 function rm-sshkey() {
@@ -213,21 +213,9 @@ flip() { echo "（╯°□°）╯ ┻━┻"; }
 shrug() { echo "¯\_(ツ)_/¯"; }
 matrix() { echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|awk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}' }
 
-insert_sudo() { zle beginning-of-line; zle -U "sudo " }
+insert_sudo() { zle beginning-of-line; zle -U "s " }
 zle -N insert-sudo insert_sudo
 bindkey "^[s" insert-sudo
-
-# bitch
-bitch() {
-  if [[ "${BUFFER}" == *" bitch" ]] && [[ "${BUFFER}" != su(do|)\ * ]]; then
-    BUFFER="sudo ${BUFFER% bitch}"
-  elif [[ "${BUFFER}" == "bitch" ]]; then
-    LAST_CMD=$(fc -l -1)
-    BUFFER="sudo ${LAST_CMD#*  }"
-  fi
-  zle .accept-line
-}
-zle -N accept-line bitch
 
 # Backup funciton
 bu() { cp "$1" "$1".backup-`date +%y%m%d`; }
@@ -242,15 +230,9 @@ if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
 fi
 
-restart-pulp() {
-  for service in httpd mongod pulp_celerybeat pulp_workers pulp_resource_manager qpidd; do
-    sudo service $service restart
-  done
-}
-
 # Curl to bash
 c2b() {
-  curl -L ${1} | sudo bash
+  curl -L ${1} | s bash
 }
 export PATH="$HOME/.dotfiles/bin/packer:$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
