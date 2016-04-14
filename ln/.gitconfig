@@ -8,52 +8,91 @@
 	trustExitCode = true
 	keepBackup = false
 [alias]
-    ds = diff --staged      # git ds - diff your staged changes == review before committing.
-    st = status -s          # smarter status - include tag and branch info
-    fup = log --since=1.day --oneline --author='Justin Garrison'  # I know what you did yesterday - great for follow-ups
-    ls = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short  # pretty one-line log with tags, branches and authors
-    lsv = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short --    numstat # a verbose ls, shows changed files too
-    
-    # some resets without explanation
-    r = reset
-    r1 = reset HEAD^
-    r2 = reset HEAD^^
-    rh = reset --hard
-    rh1 = reset HEAD^ --hard
-    rh2 = reset HEAD^^ --hard
-    
-    # basic shortcuts
-    cp = cherry-pick
-    cl = clone
-    ci = commit
-    co = checkout
-    br = branch 
-    diff = diff --word-diff
-    dc = diff --cached
-    
-    # stash shortcuts
-    sl = stash list
-    sa = stash apply
-    ss = stash save
-    
-    # log related - thanks to @mwd410
-    l = log 
-    lh = log --graph
-    la = !git lh --date-order --all 2> /dev/null
-    lb = log --graph --simplify-by-decoration
-    lba = !git lb --all 
-    h = !git --no-pager log --graph -n 15
-    a = !git --no-pager la -n 15    
+  ds = diff --staged      # git ds - diff your staged changes == review before committing.
+  st = status -s          # smarter status - include tag and branch info
+  fup = log --since=1.day --oneline --author='Justin Garrison'  # I know what you did yesterday - great for follow-ups
+  ls = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short  # pretty one-line log with tags, branches and authors
+  lsv = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short --    numstat # a verbose ls, shows changed files too
+  
+  # some resets without explanation
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+  
+  # basic shortcuts
+  cp = cherry-pick
+  cl = clone
+  ci = commit
+  co = checkout
+  br = branch 
+  diff = diff --word-diff
+  dc = diff --cached
+  d = diff
+  g = grep -in 
+  a = add
+  cm = commit -m
+  
+  # stash shortcuts
+  sl = stash list
+  sa = stash apply
+  ss = stash save
+  
+  # log related - thanks to @mwd410
+  l = log 
+  lh = log --graph
+  la = !git lh --date-order --all 2> /dev/null
+  lb = log --graph --simplify-by-decoration
+  lba = !git lb --all 
+  h = !git --no-pager log --graph -n 15
+  a = !git --no-pager la -n 15    
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+  # stolen from aauren
+  # Finds the upstream tracking branch, if it contains a remote, fetch the remote first, then attempt to merge, failing over into a rebase operation if that fails
+  up = "!f() { \
+    upstream_br="$(git rev-parse --abbrev-ref "$(git rev-parse --abbrev-ref HEAD)@{upstream}")"; \
+    if [[ ${upstream_br} == *"/"* ]]; then \
+      echo "fetching ${upstream_br%%/*}..."; \
+      git fetch ${upstream_br%%/*} --prune; \
+    fi; \
+    echo "merging/rebasing on top of ${upstream_br}..."; \
+    git merge --ff-only "${upstream_br}" || git rebase --preserve-merges "${upstream_br}"; \
+  }; f"
+  # Like the above, except that this one is DANGEROUS because it will rebase accepting all of their branch's changes in the event of a conflict
+  fup = "!f() { \
+    upstream_br="$(git rev-parse --abbrev-ref "$(git rev-parse --abbrev-ref HEAD)@{upstream}")"; \
+    if [[ ${upstream_br} == *"/"* ]]; then \
+      echo "fetching ${upstream_br%%/*}..."; \
+      git fetch ${upstream_br%%/*} --prune; \
+    fi; \
+    echo "merging/rebasing on top of ${upstream_br}..."; \
+    git merge --ff-only "${upstream_br}" || git rebase -s recursive -X ours "${upstream_br}"; \
+  }; f"
+  # Updates this branch and it's tracking branch (assuming that the tracking branch isn't a remote) using the "up" alias above
+  tup = "!f() { \
+    upstream_br="$(git rev-parse --abbrev-ref "$(git rev-parse --abbrev-ref HEAD)@{upstream}")"; \
+    if [[ ! ${upstream_br} == *"/"* ]]; then \
+      git co "${upstream_br}"; \
+      git up; \
+      git co -; \
+      git up; \
+    else \
+      echo "Tracking branch is a remote, not running"; \
+    fi; \
+  }; f"
 [color]
 	ui = auto
 [diff]
-	tool = kdiff3
+	tool = vimdiff
 [rerere]
 	enabled = true
 [push]
 	default = current
 [core]
 	excludesfile = ~/.gitignore
+  editor = vim
 [pull]
 	rebase = true
