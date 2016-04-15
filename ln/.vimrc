@@ -199,6 +199,12 @@ call matchadd('ColorColumn', '\%81v', 100)
 "hi comment ctermfg=blue
 set background=dark
 
+" Make a simple "search" text object.
+" http://vim.wikia.com/wiki/Copy_or_change_search_hit
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap h :normal vs<CR>
+
 let delimitMate_expand_cr = 1     " Enable expansions for delimitMate
 set virtualedit=onemore " Allow the cursor to move just past the end of the line
 set gdefault " The substitute flag g is on
