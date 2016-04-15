@@ -236,6 +236,16 @@ if [[ -d "${ZDOTDIR}"/zsh.d ]]; then
     done
 fi
 
+hexip() {
+  if [[ $1 =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+    printf '%02X' $(echo ${1//./ }) ; echo
+  elif [[ $1 =~ ^([0-9A-Fa-f]{2})*$ ]]; then
+    printf "%d." $(echo $1 | sed 's/../0x& /g' | tr ' ' '\n' | tac) | sed 's/\.$/\n/'
+  else
+    gethostip -x $1
+  fi
+}
+
 if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
 fi
