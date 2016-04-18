@@ -24,6 +24,7 @@ Plugin 'saltstack/salt-vim'
 Plugin 'fatih/vim-go'
 
 " Management plugins
+Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
