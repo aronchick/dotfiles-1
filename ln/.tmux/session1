@@ -1,3 +1,0 @@
-#session1
-new -n weechat weechat
-neww -n shell
