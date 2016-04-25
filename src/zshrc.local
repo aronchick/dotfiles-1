@@ -237,12 +237,15 @@ if [[ -d "${ZDOTDIR}"/zsh.d ]]; then
 fi
 
 hexip() {
+  # if given a dotted ip, convert to hex
   if [[ $1 =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
     printf '%02X' $(echo ${1//./ }) ; echo
+  # if given hex, convert to dotted ip
   elif [[ $1 =~ ^([0-9A-Fa-f]{2})*$ ]]; then
     printf "%d." $(echo $1 | sed 's/../0x& /g' | tr ' ' '\n' | tac) | sed 's/\.$/\n/'
+  # if given hostname, output dotted ip and hex ip
   else
-    gethostip -x $1
+    gethostip -dx $1
   fi
 }
 
