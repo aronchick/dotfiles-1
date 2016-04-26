@@ -53,7 +53,6 @@ alias :q='exit'
 alias fs="stat -f '%z bytes'"
 alias df="df -h"
 alias du='du -ch'
-alias rpg="rpm -qa | grep -i"
 
 if (( $+commands[subscription-manager] )) ; then
     alias sm="s subscription-manager"
@@ -75,7 +74,7 @@ alias -g L='| less'
 alias -g G='| grep'
 alias df="df -h"
 alias du='du -ch'
-alias rpg="rpm -qa | grep"
+alias rpg="rpm -qa | grep -i"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
 alias s="SHELL=/bin/zsh sudo -s "
