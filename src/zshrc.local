@@ -241,7 +241,7 @@ hexip() {
     printf '%02X' $(echo ${1//./ }) ; echo
   # if given hex, convert to dotted ip
   elif [[ $1 =~ ^([0-9A-Fa-f]{2})*$ ]]; then
-    printf "%d." $(echo $1 | sed 's/../0x& /g' | tr ' ' '\n' | tac) | sed 's/\.$/\n/'
+    printf "%d." $(echo $1 | sed 's/../0x& /g' | tr ' ' '\n' ) | sed 's/\.$/\n/'
   # if given hostname, output dotted ip and hex ip
   else
     gethostip -dx $1
