@@ -94,7 +94,13 @@ alias dpid="d inspect --format '{{ .State.Pid }}' "
 alias dip="d inspect --format '{{ .NetworkSettings.IPAddress }}' "
 
 # *ctl
-alias sc='s systemctl'
+function sc() { 
+  if [[ "$1" == "status" ]]; then 
+    systemctl "${@}"
+  else
+    s systemctl "${@}"
+  fi
+}
 alias jc='s journalctl'
 alias mc='s machinectl'
 alias kc='kubectl'
