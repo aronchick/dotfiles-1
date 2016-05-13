@@ -83,7 +83,6 @@ alias s="SHELL=/bin/zsh sudo -s "
 alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
 
 # docker
-alias d='s docker'
 alias dl='d logs -f'
 alias db='d build'
 alias dm='docker-machine'
@@ -141,15 +140,18 @@ bindkey -M vicmd j vi-down-line-or-history
 #------------FUNCTIONS----------------
 
 # docker functions
-function de() { docker exec -it "$@" /bin/bash; }
-
-dme() { eval "$(docker-machine env $1)"; }
-dmes() { eval "$(docker-machine env --swarm $1)"; }
-dmip() { export DOCKER_MACHINE_IP=`dm ip $DOCKER_MACHINE_NAME`; echo $DOCKER_MACHINE_IP; }
-
-drm() { docker rm -v $(docker ps -aq -f status=exited); }
-drmf() { docker rm -f -v $(docker ps -aq); }
-drmi() { docker rmi $(docker images -q -f dangling=true); }
+d() { 
+if [ -z "${DOCKER_HOST}"]; then
+  # don't need sudo if using a remote host
+  alias d='docker'
+else
+  alias d='s docker'
+fi
+}
+de() { d exec -it "$@" /bin/bash; }
+drm() { d rm -v $(d ps -aq -f status=exited); }
+drmf() { d rm -f -v $(d ps -aq); }
+drmi() { d rmi $(d images -q -f dangling=true); }
 
 # apt-history
 function apt-history(){
