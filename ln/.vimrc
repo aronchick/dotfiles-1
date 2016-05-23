@@ -30,6 +30,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ciaranm/detectindent'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
@@ -78,6 +79,8 @@ map <silent> <A-v> :vsplit<CR>
 
 " misc maps
 nmap , $p
+noremap Y y$            " Y will yank to end of current line
+inoremap <C-e> <C-o>$   " Ctrl-e will go to end of line in insert mode
 " Jump to end of paste
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
