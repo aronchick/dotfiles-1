@@ -141,7 +141,7 @@ bindkey -M vicmd j vi-down-line-or-history
 
 # docker functions
 d() { 
-if [ -z "${DOCKER_HOST}"]; then
+if [ ! -z "${DOCKER_HOST}"]; then
   # don't need sudo if using a remote host
   alias d='docker'
 else
