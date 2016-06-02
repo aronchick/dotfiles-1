@@ -37,9 +37,6 @@ alias llg'll | grep'
 
 # fasd
 alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
 alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
@@ -227,14 +224,17 @@ function rm-sshkey() {
 function sshup() { while $(ping -c 1 ${1} | grep -qi unreachable); do printf %s "."; sleep 1; done && ssh "$1"; }
 
 # Most important functions
-disapointed() { echo " ಠ_ಠ "; }
+disappointed() { echo " ಠ_ಠ "; }
 flip() { echo "（╯°□°）╯ ┻━┻"; }
 shrug() { echo "¯\_(ツ)_/¯"; }
 matrix() { echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|awk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}' }
 
-insert_sudo() { zle beginning-of-line; zle -U "s " }
+insert_sudo() { zle beginning-of-line
+  zle -U 's '
+  zle end-of-line
+}
 zle -N insert-sudo insert_sudo
-bindkey "^[s" insert-sudo
+bindkey '<ctrl-x>s' insert-sudo
 
 # Backup funciton
 bu() { cp "$1" "$1".backup-`date +%y%m%d`; }
