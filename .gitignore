@@ -17,7 +17,7 @@ src/.dir_history
 *fnotify
 
 # tmux plugins
-ln/.tmux/plugins/tmux*
+ln/.tmux/*
 
 # vim plugins
 ln/.vim/bundle/*
