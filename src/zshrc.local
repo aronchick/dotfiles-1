@@ -72,7 +72,6 @@ alias -g H='| head'
 alias -g L='| less'
 alias -g G='| grep'
 alias df="df -h"
-alias du='du -ch'
 alias rpg="rpm -qa | grep -i"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
@@ -220,6 +219,10 @@ if [[ -d "${ZDOTDIR}"/zsh.d ]]; then
         source "${ZSH_FILE}"
     done
 fi
+
+settitle() {
+    printf "\033k$1\033\\"
+}
 
 hexip() {
   # if given a dotted ip, convert to hex
