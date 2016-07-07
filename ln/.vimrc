@@ -16,11 +16,11 @@ Plugin 'Matt-Deacalion/vim-systemd-syntax'
 Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'hashivim/vim-hashicorp-tools'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'chase/vim-ansible-yaml'
 Plugin 'scrooloose/syntastic'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'gmarik/vim-markdown'
 Plugin 'saltstack/salt-vim'
+Plugin 'stephpy/vim-yaml'
 Plugin 'fatih/vim-go'
 
 " Management plugins
