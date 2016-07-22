@@ -33,7 +33,8 @@ alias l='ls -CF'
 alias latr='ls -lAtr'
 alias lla='ll -A'       
 alias l1='ls -1A'       # All files in 1 column
-alias llg'll | grep'
+alias tree='tree -F'
+alias tre='tree -F -L 1'
 
 # fasd
 alias a='fasd -a'        # any
