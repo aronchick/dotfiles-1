@@ -40,7 +40,7 @@ alias dip="dk inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dkd="dk run -d -P"
 
 # Run interactive container, e.g., $dki base /bin/bash
-alias dki="dk run -i -t -P"
+alias dki="dk run -i -t -P --rm"
 
 # Execute interactive container, e.g., $dex base /bin/bash
 alias dex="dk exec -i -t"
@@ -54,8 +54,11 @@ drm() { dk rm $(dk ps -a -q -f status=exited); }
 # Stop and Remove all containers
 alias drmf='dk stop $(dk ps -a -q) && dk rm $(dk ps -a -q)'
 
+# Remove untagged images
+drni() { dk rmi $(di | grep "$<none>" | awk '{print $3}') }
+
 # Remove all images
-dri() { dk rmi $(dk images -q); }
+drai() { dk rmi $(di -q) }
 
 # dkfile build, e.g., $dbu tcnksm/test 
 dbu() { dk build -t=$1 .; }
