@@ -215,7 +215,7 @@ omap h :normal vs<CR>
 let delimitMate_expand_cr = 1     " Enable expansions for delimitMate
 set virtualedit=onemore " Allow the cursor to move just past the end of the line
 set gdefault " The substitute flag g is on
-let &showbreak="\u21aa " " Show a left arrow when wrapping text
+" let &showbreak="\u21aa " " Show a left arrow when wrapping text
 
 """ Prevent lag when hitting escape
 set ttimeoutlen=0
