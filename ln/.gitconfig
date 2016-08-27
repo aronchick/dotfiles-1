@@ -83,6 +83,7 @@
       echo "Tracking branch is a remote, not running"; \
     fi; \
   }; f"
+	undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
 [color]
 	ui = auto
 [diff]
