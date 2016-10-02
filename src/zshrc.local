@@ -62,7 +62,6 @@ fi
 alias gtfo="/dev/null"
 alias stfu="/dev/null"
 alias wtf="/dev/urandom"
-alias mount='mount | column -t'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lsg="s lsof | grep"
 alias lvim='vim -c "normal '\''0"'
