@@ -9,7 +9,7 @@
 	keepBackup = false
 [alias]
   ds = diff --staged      # git ds - diff your staged changes == review before committing.
-  s = status -s           # smarter status - include tag and branch info
+  s = status --short --branch    # smarter status - include tag and branch info
   fup = log --since=1.day --oneline --author='Justin Garrison'  # I know what you did yesterday - great for follow-ups
   ls = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short  # pretty one-line log with tags, branches and authors
   lsv = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short --    numstat # a verbose ls, shows changed files too
@@ -84,6 +84,11 @@
     fi; \
   }; f"
 	undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
+	commend = commit --amend --no-edit
+	stsh = stash --keep-index
+	staash = stash --include-untracked
+	staaash = stash --all
+	grog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
 [color]
 	ui = auto
 [diff]
