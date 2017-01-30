@@ -10,3 +10,6 @@
 [submodule "bin/tmux-cssh"]
 	path = bin/tmux-cssh
 	url = https://github.com/dennishafemann/tmux-cssh.git
+[submodule "src/.zprezto"]
+	path = src/.zprezto
+	url = https://github.com/rothgar/prezto.git
