@@ -1,18 +1,12 @@
 [submodule "ln/.tmux/plugins/tpm"]
 	path = ln/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
-[submodule "src/.zprezto"]
-	path = src/.zprezto
-	url = https://github.com/rothgar/prezto.git
 [submodule "ln/.vim/bundle/vundle.vim"]
 	path = ln/.vim/bundle/vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
 [submodule "ln/.vim/bundle/Vundle.vim"]
 	path = ln/.vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
-[submodule "bin/lastpass-cli"]
-	path = bin/lastpass-cli
-	url = https://github.com/lastpass/lastpass-cli.git
 [submodule "bin/tmux-cssh"]
 	path = bin/tmux-cssh
 	url = https://github.com/dennishafemann/tmux-cssh.git
