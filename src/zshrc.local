@@ -12,6 +12,7 @@ export SAVEHIST='100000'
 export HISTFILE=$HOME/.dotfiles/src/.zhistory
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export TZ':/etc/localtime'
 
 #------------OPTIONS------------------
 
