@@ -5,3 +5,7 @@ alias sshpw="ssh -o PreferredAuthentications=keyboard-interactive,password -o Pu
 shrno() {
   ssh -o "StrictHostKeyChecking=no" -o "GlobalKnownHostsFile=/dev/null" -o "UserKnownHostsFile=/dev/null" root@${1}
 }
+
+curl-cert() {
+  openssl s_client -showcerts -connect "${1}":443 -servername ${1}
+}
