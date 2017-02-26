@@ -104,6 +104,9 @@ command! W w
 command! Q q
 map q: :q
 
+" Custom commands
+command Write call WriteMode()
+
 " press jj to escape insert mode  
 imap jj <Esc>
 set backspace=indent,eol,start
@@ -229,4 +232,11 @@ function! ToggleColorColumn()
     else
         windo let &colorcolumn = 80
     endif
+endfunction
+
+function! WriteMode()
+    set nonumber
+    set nocursorline
+    GitGutterDisable
+    IndentLinesDisable
 endfunction
