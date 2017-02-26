@@ -94,12 +94,6 @@ alias mc='s machinectl'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# SSH aliases
-# setup worktunnel in .ssh/config
-alias sshwt='ssh -A -t worktunnel ssh -A -t'
-# setup hometunnel is .ssh/config
-alias sshht='ssh -A -t hometunnel ssh -A -t'
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -124,27 +118,6 @@ bindkey -M vicmd k vi-up-line-or-history
 bindkey -M vicmd j vi-down-line-or-history
 
 #------------FUNCTIONS----------------
-
-# apt-history
-function apt-history(){
-      case "$1" in
-        install)
-              cat /var/log/dpkg.log | grep 'install '
-              ;;
-        upgrade|remove)
-              cat /var/log/dpkg.log | grep $1
-              ;;
-        rollback)
-              cat /var/log/dpkg.log | grep upgrade | \
-                  grep "$2" -A10000000 | \
-                  grep "$3" -B10000000 | \
-                  awk '{print $4"="$5}'
-              ;;
-        *)
-              cat /var/log/dpkg.log
-              ;;
-      esac
-}
 
 # attach to a tmux session or start a new session if one doesn't exist
 function muxt() { tmux attach || tmux }
@@ -228,6 +201,15 @@ hexip() {
   else
     gethostip -dx $1
   fi
+}
+
+# Copy an ip address from a domain
+# Usage cip domain.com
+function cip() {
+	ip=$(host $1 | grep "has address" \
+       | awk '{match($0,/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/); ip = substr($0,RSTART,RLENGTH); print ip}')
+	printf $ip | xclip -selection clipboard
+	echo $ip
 }
 
 if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
