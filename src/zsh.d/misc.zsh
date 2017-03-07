@@ -11,12 +11,15 @@ curl-cert() {
 }
 
 book(){
+    setopt xtrace
     BRANCH=`git branch | grep \* | cut -d ' ' -f2`
     git add .
     git commit -m "Another book commit"
     git push atlas ${BRANCH}
     git push origin ${BRANCH}
     O=$(atlas build --pdf -b ${BRANCH})
-    LINK=$(echo $O | grep pdf | cut -d ">" -f 2)
+    echo "${O}"
+    LINK=$(echo "${O}" | grep pdf | cut -d ">" -f 2)
     xdg-open $LINK
+    unsetopt xtrace
 }
