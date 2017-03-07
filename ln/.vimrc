@@ -201,10 +201,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w! w !sudo tee > /dev/null %
 
-" Highlight the 81st column on wide lines
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
-
 " fix dark blue color
 "hi comment ctermfg=blue
 set background=dark
@@ -225,14 +221,6 @@ set ttimeoutlen=0
 set timeoutlen=1000 
 au InsertEnter * set timeout
 au InsertLeave * set notimeout
-
-function! ToggleColorColumn()
-    if &colorcolumn != 0
-        windo let &colorcolumn = 0
-    else
-        windo let &colorcolumn = 80
-    endif
-endfunction
 
 function! WriteMode()
     set nonumber
