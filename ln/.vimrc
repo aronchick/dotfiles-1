@@ -31,13 +31,14 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ciaranm/detectindent'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
-Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
-Plugin 'yggdroot/indentLine'
+Plugin 'sjl/gundo.vim'
 Plugin 'rking/ag.vim'
 
 " Git integration
@@ -55,6 +56,7 @@ set noswapfile
 set linebreak     " wrap lines on 'word' boundaries
 set shiftwidth=2  " number of spaces to use for autoindenting
 set tabstop=2     " a tab is four spaces
+set wildmenu      " visual autocomplete for command menu
 nmap <silent> ,/ :nohlsearch<CR>
 
 " force myself to learn vim "aarows"
@@ -85,6 +87,12 @@ inoremap <C-e> <C-o>$   " Ctrl-e will go to end of line in insert mode
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
 
 " Leader shortcuts
 let mapleader = "\<Space>"
@@ -95,6 +103,8 @@ nnoremap <Leader>rn :set norelativenumber!<CR>
 nnoremap <Leader>c  :noh<CR>                              " clear highlighting
 nnoremap <Leader>l :IndentLinesToggle<CR> :set nonumber! norelativenumber!<CR>
 nnoremap <Leader>p  :set paste!<CR>                       " toggle paste
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
 
 " Make these commonly mistyped commands still work
 command! WQ wq
@@ -157,6 +167,15 @@ map <C-n> :NERDTreeToggle<CR>
 " Autoclose if only NERDtree is left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
 " CtrlP options
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -195,8 +214,23 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 syntax enable
 
-" set .md as markdown without a plugin
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup configgroup
+    autocmd!
+    autocmd VimEnter * highlight clear SignColumn
+    autocmd FileType ruby setlocal tabstop=2
+    autocmd FileType ruby setlocal shiftwidth=2
+    autocmd FileType ruby setlocal softtabstop=2
+    autocmd FileType ruby setlocal commentstring=#\ %s
+    autocmd FileType python setlocal commentstring=#\ %s
+    autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+    autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter *.pp setlocal tabstop=4
+    autocmd BufEnter *.pp setlocal tabstop=4
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup END
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w! w !sudo tee > /dev/null %
