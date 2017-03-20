@@ -53,10 +53,11 @@ filetype plugin indent on
 set nocp
 set nobackup
 set noswapfile
-set linebreak     " wrap lines on 'word' boundaries
-set shiftwidth=2  " number of spaces to use for autoindenting
-set tabstop=2     " a tab is four spaces
-set wildmenu      " visual autocomplete for command menu
+set linebreak      " wrap lines on 'word' boundaries
+set shiftwidth=2   " number of spaces to use for autoindenting
+set tabstop=2      " a tab is four spaces
+set wildmenu       " visual autocomplete for command menu
+set isk+=_,$,@,%,# " none of these should be word dividers, so make them not be"
 nmap <silent> ,/ :nohlsearch<CR>
 
 " force myself to learn vim "aarows"
