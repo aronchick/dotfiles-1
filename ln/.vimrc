@@ -260,6 +260,10 @@ au InsertLeave * set notimeout
 function! WriteMode()
     set nonumber
     set nocursorline
+    set noshowmode
+    set noruler
+    set laststatus=0
+    set noshowcmd
     GitGutterDisable
     IndentLinesDisable
 endfunction
