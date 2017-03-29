@@ -91,9 +91,6 @@ nnoremap <silent> p p`]
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
 
 " Leader shortcuts
 let mapleader = "\<Space>"
