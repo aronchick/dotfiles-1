@@ -1,5 +1,5 @@
-if command -v kubectl >/dev/null 2>&1; then
-  . <(kubectl completion zsh)
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
 
   kc() {
     if [ ! -z ${KUBE_NAMESPACE+x} ]; then
