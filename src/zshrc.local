@@ -81,13 +81,17 @@ alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
 
 # *ctl
 function sc() { 
-  if [[ "$1" == "status" ]]; then 
+  if [[ "$1" == "status" ]] || [[ "$1" == "cat" ]]; then 
     systemctl "${@}"
   else
     s systemctl "${@}"
   fi
 }
+alias scr='sc restart'
+alias scc='sc cat'
+alias scs='sc status'
 alias jc='s journalctl'
+alias jcf='s journalctl -flu'
 alias mc='s machinectl'
 
 # Add an "alert" alias for long running commands.  Use like so:
