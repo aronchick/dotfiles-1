@@ -54,8 +54,8 @@ set nocp
 set nobackup
 set noswapfile
 set linebreak      " wrap lines on 'word' boundaries
-set shiftwidth=2   " number of spaces to use for autoindenting
-set tabstop=2      " a tab is four spaces
+set shiftwidth=4   " number of spaces to use for autoindenting
+set tabstop=4      " a tab is four spaces
 set wildmenu       " visual autocomplete for command menu
 set isk+=_,$,@,%,# " none of these should be word dividers, so make them not be"
 nmap <silent> ,/ :nohlsearch<CR>
@@ -219,11 +219,17 @@ augroup configgroup
     autocmd FileType ruby setlocal shiftwidth=2
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal commentstring=#\ %s
+    autocmd FileType python setlocal tabstop=4
+    autocmd FileType python setlocal shiftwidth=4
+    autocmd FileType python setlocal softtabstop=4
+    autocmd BufEnter python setlocal expandtab
     autocmd FileType python setlocal commentstring=#\ %s
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
     autocmd BufEnter *.pp setlocal tabstop=4
-    autocmd BufEnter *.pp setlocal tabstop=4
+    autocmd FileType *.pp setlocal shiftwidth=4
+    autocmd FileType *.pp setlocal softtabstop=4
+    autocmd FileType *.pp setlocal commentstring=#\ %s
     autocmd BufEnter *.sh setlocal tabstop=2
     autocmd BufEnter *.sh setlocal shiftwidth=2
     autocmd BufEnter *.sh setlocal softtabstop=2
