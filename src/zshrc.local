@@ -49,6 +49,15 @@ alias ..='cd ..'
 alias ....='cd ../..'
 alias xxx='exit'
 alias :q='exit'
+alias -- --='cd -'
+alias dl="cd ~/downloads"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# vhosts
+alias hosts='sudo vim /etc/hosts'
 
 # File size
 alias fs="stat -f '%z bytes'"
@@ -72,12 +81,15 @@ alias dmsg='less +F /var/log/dmesg'
 alias -g H='| head'
 alias -g L='| less'
 alias -g G='| grep'
+alias -g W='| wc -l'
 alias df="df -h"
 alias rpg="rpm -qa | grep -i"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
 alias s="SHELL=/bin/zsh sudo -s "
 alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
+alias open='xdg-open'
+alias c="tr -d '\n' | xclip -selection clipboard"
 
 # *ctl
 function sc() { 

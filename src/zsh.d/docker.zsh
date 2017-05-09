@@ -3,7 +3,7 @@
 # Docker alias and function
 # ------------------------------------
 # docker functions
-function dk() {
+function docker() {
   if [ ! -z "${DOCKER_HOST}"]; then
     # don't need sudo if using a remote host
     docker "$@"
@@ -11,6 +11,8 @@ function dk() {
     s docker "$@"
   fi
 }
+
+alias dk='docker'
 
 drmi() { d rmi $(d images -q -f dangling=true); }
 
