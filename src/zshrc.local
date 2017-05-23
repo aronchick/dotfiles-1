@@ -51,6 +51,8 @@ alias xxx='exit'
 alias :q='exit'
 alias -- --='cd -'
 alias dl="cd ~/downloads"
+alias src="cd ~/src"
+alias pp="cd ~/pp"
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -93,10 +95,10 @@ alias c="tr -d '\n' | xclip -selection clipboard"
 
 # *ctl
 function sc() { 
-  if [[ "$1" == "status" ]] || [[ "$1" == "cat" ]]; then 
-    systemctl "${@}"
-  else
+  if [[ "$1" == "restart" ]] || [[ "$1" == "daemon-reload" ]]; then 
     s systemctl "${@}"
+  else
+    systemctl "${@}"
   fi
 }
 alias scr='sc restart'
@@ -106,6 +108,17 @@ alias jc='s journalctl'
 alias jcf='s journalctl -flu'
 alias mc='s machinectl'
 
+function AP() {
+    if [[ -z $1 ]]; then
+        awk '{print $1}'
+    else
+        if [[ -z $2 ]]; then
+            awk "{print $"${1}" }"
+        else
+            awk -F $2 "{print $"${1}" }"
+        fi
+    fi
+}
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
