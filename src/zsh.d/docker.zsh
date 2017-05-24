@@ -16,21 +16,15 @@ alias dk='docker'
 
 drmi() { d rmi $(d images -q -f dangling=true); }
 
-alias dl='dk logs -f'
+alias dkl='dk logs -f'
 alias dm='docker-machine'
 alias dc='docker-compose'
-
-# docker swarm alias >1.12
-alias ds='dk swarm'
-
-# Get latest container ID
-alias dl="dk ps -l -q"
 
 # Get container process
 alias dps="dk ps"
 
 # Get process included stop container
-alias dpa="dk ps -a"
+alias dpsa="dk ps -a"
 
 # Get images
 alias di="dk images"
@@ -43,30 +37,28 @@ alias dkd="dk run -d -P"
 
 # Run interactive container, e.g., $dki base /bin/bash
 alias dki="dk run -i -t -P --rm"
-
-# Execute interactive container, e.g., $dex base /bin/bash
-alias dex="dk exec -i -t"
+# run new container with bash
+dkib() { dk run -i -t -P --rm ${1} /bin/bash }
+# run bash in an existing container
+dksh() { dk exec -i -t ${1} /bin/bash }
 
 # Stop all containers
-dstop() { dk stop $(dk ps -a -q); }
+dkstop() { dk stop $(dk ps -a -q); }
 
 # Remove all containers
-drm() { dk rm $(dk ps -a -q -f status=exited); }
+dkrm() { dk rm $(dk ps -a -q -f status=exited); }
 
 # Stop and Remove all containers
-alias drmf='dk stop $(dk ps -a -q) && dk rm $(dk ps -a -q)'
+alias dkrmf='dk stop $(dk ps -a -q) && dk rm $(dk ps -a -q)'
 
 # Remove untagged images
-drni() { dk rmi $(di | grep "$<none>" | awk '{print $3}') }
+dkrni() { dk rmi $(di | grep "$<none>" | awk '{print $3}') }
 
 # Remove all images
-drai() { dk rmi $(di -q) }
+dkrai() { dk rmi $(di -q) }
 
 # dkfile build, e.g., $dbu tcnksm/test 
-dbu() { dk build -t=$1 .; }
+dkbu() { dk build -t=$1 .; }
 
 # Show all alias related dk
 dalias() { alias | grep 'dk' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
-
-# Bash into running container
-dbash() { dk exec -it $(dk ps -aqf "name=$1") bash }
