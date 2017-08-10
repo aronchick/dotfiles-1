@@ -12,4 +12,5 @@ if [ $commands[kubectl] ]; then
   alias kc='kubectl'
   # get autocompletions from kubectl command
   compdef kc=kubectl
+  kcsh() { kc exec -i -t "$@" /bin/bash }
 fi

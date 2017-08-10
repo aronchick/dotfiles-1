@@ -56,7 +56,9 @@ alias pp="cd ~/pp"
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias httpdump="sudo tcpdump -A -s 10240 'tcp port 4080 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)' \
+    | egrep --line-buffered \"^........(GET |HTTP\/|POST |HEAD )|^[A-Za-z0-9-]+: \" \
+    | sed -r 's/^........(GET |HTTP\/|POST |HEAD )/\n\1/g'"
 
 # vhosts
 alias hosts='sudo vim /etc/hosts'
@@ -88,10 +90,12 @@ alias df="df -h"
 alias rpg="rpm -qa | grep -i"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
-alias s="SHELL=/bin/zsh sudo -s "
+alias s="SHELL=/bin/zsh sudo "
 alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
 alias open='xdg-open'
 alias c="tr -d '\n' | xclip -selection clipboard"
+# Let me use aliases with watch command
+alias watch="watch "
 
 # *ctl
 function sc() { 
