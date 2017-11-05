@@ -234,6 +234,7 @@ augroup configgroup
     autocmd BufEnter *.sh setlocal shiftwidth=2
     autocmd BufEnter *.sh setlocal softtabstop=2
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+    autocmd FileType asciidoc      call WriteMode()
 augroup END
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
