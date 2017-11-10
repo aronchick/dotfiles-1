@@ -69,7 +69,7 @@ alias df="df -h"
 alias du='du -ch'
 
 if (( $+commands[subscription-manager] )) ; then
-    alias sm="s subscription-manager"
+    alias sm="sudo subscription-manager"
 fi
 
 # MISC commands
@@ -77,10 +77,11 @@ alias gtfo="/dev/null"
 alias stfu="/dev/null"
 alias wtf="/dev/urandom"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-alias lsg="s lsof | grep"
+alias lsg="sudo lsof | grep"
 alias lvim='vim -c "normal '\''0"'
 alias v='vim'
-alias lmsg='s less +F /var/log/messages'
+alias sv='sudo vim'
+alias lmsg='sudo less +F /var/log/messages'
 alias dmsg='less +F /var/log/dmesg'
 alias -g H='| head'
 alias -g L='| less'
@@ -90,7 +91,6 @@ alias df="df -h"
 alias rpg="rpm -qa | grep -i"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
-alias s="SHELL=/bin/zsh sudo "
 alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
 alias open='xdg-open'
 alias c="tr -d '\n' | xclip -selection clipboard"
@@ -100,17 +100,17 @@ alias watch="watch "
 # *ctl
 function sc() { 
   if [[ "$1" == "restart" ]] || [[ "$1" == "daemon-reload" ]]; then 
-    s systemctl "${@}"
+    sudo systemctl "${@}"
   else
     systemctl "${@}"
   fi
 }
-alias scr='sc restart'
-alias scc='sc cat'
-alias scs='sc status'
-alias jc='s journalctl'
-alias jcf='s journalctl -flu'
-alias mc='s machinectl'
+alias scr='sudo systemctl restart'
+alias scc='systemctl cat'
+alias scs='systemctl status'
+alias jc='sudo journalctl'
+alias jcf='sudo journalctl -flu'
+alias mc='sudo machinectl'
 
 function AP() {
     if [[ -z $1 ]]; then
@@ -179,7 +179,7 @@ function start-vnc0() { x11vnc -display :0 -rfbport 5999 -repeat -noncache -q -b
 
 function extract-rpm() { rpm2cpio "$1" | cpio -idmv; }
 
-function show-cert() { s openssl x509 -text -in "$1"; }
+function show-cert() { sudo openssl x509 -text -in "$1"; }
 
 # remove host key for ssh
 function rm-sshkey() {
@@ -251,7 +251,7 @@ fi
 
 # Curl to bash
 c2b() {
-  curl -L ${1} | s bash
+  curl -L ${1} | sudo bash
 }
 export PATH="$HOME/.dotfiles/bin/packer:$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"

@@ -8,7 +8,7 @@ function docker() {
     # don't need sudo if using a remote host
     docker "$@"
   else
-    s docker "$@"
+    sudo docker "$@"
   fi
 }
 
