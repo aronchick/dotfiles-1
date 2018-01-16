@@ -62,3 +62,6 @@ dkbu() { dk build -t=$1 .; }
 
 # Show all alias related dk
 dalias() { alias | grep 'dk' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+
+# dockly
+alias dockly='docker run -it --rm --name dockly -v /var/run/docker.sock:/var/run/docker.sock rothgar/dockly:latest'
