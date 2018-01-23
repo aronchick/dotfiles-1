@@ -4,7 +4,7 @@ export SHELL='/bin/zsh'
 export EDITOR='vim'
 export VISUAL='vim'
 export CDPATH='.:~:~/src/'
-export GOPATH=$HOME
+export GOROOT=$HOME/bin/go
 export RSYNC_RSH=ssh
 export JAVA_HOME='/usr/java/latest'
 export HISTSIZE='10000'
@@ -163,6 +163,13 @@ function md() {
   mkdir -p "$@" && cd "$@"
 }
 
+function oscat() {
+    if [ -e /etc/redhat-release ]; then
+        cat /etc/redhat-release
+    else
+        cat /etc/os-release
+    fi
+}
 # Search history with h $arg or just type h for full history
 function h() { if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi; }
 
@@ -270,7 +277,7 @@ fi
 c2b() {
   curl -L ${1} | sudo bash
 }
-export PATH="$HOME/.dotfiles/bin/packer:$HOME/.dotfiles/bin:$GOPATH/bin:$EC2_HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.dotfiles/bin:$GOROOT/bin:$EC2_HOME/bin:$PATH"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
