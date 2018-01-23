@@ -143,4 +143,8 @@
 [difftool]
   prompt = false
 [difftool "icdiff"]
-  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+  cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
+[icdiff]
+	options = --highlight --line-numbers
+[remote "origin"]
+  fetch = +refs/pull/*/head:refs/remotes/pr/*
