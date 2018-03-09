@@ -12,56 +12,56 @@ function docker() {
   fi
 }
 
-alias dk='docker'
+alias docker='docker'
 
-drmi() { d rmi $(d images -q -f dangling=true); }
+drmi() { docker rmi $(docker images -q -f dangling=true); }
 
-alias dkl='dk logs -f'
+alias dkl='docker logs -f'
 alias dm='docker-machine'
 alias dc='docker-compose'
 
 # Get container process
-alias dps="dk ps"
+alias dps="docker ps"
 
 # Get process included stop container
-alias dpsa="dk ps -a"
+alias dpsa="docker ps -a"
 
 # Get images
-alias di="dk images"
+alias di="docker images"
 
 # Get container IP
-alias dip="dk inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
 # Run deamonized container, e.g., $dkd base /bin/echo hello
-alias dkd="dk run -d -P"
+alias dkd="docker run -d -P"
 
 # Run interactive container, e.g., $dki base /bin/bash
-alias dki="dk run -i -t -P --rm"
+alias dki="docker run -i -t -P --rm"
 # run new container with bash
-dkib() { dk run -i -t -P --rm ${1} /bin/bash }
+dkib() { docker run -i -t -P --rm ${1} /bin/bash }
 # run bash in an existing container
-dksh() { dk exec -i -t ${1} /bin/bash }
+dksh() { docker exec -i -t ${1} /bin/bash }
 
 # Stop all containers
-dkstop() { dk stop $(dk ps -a -q); }
+dkstop() { docker stop $(docker ps -a -q); }
 
 # Remove all containers
-dkrm() { dk rm $(dk ps -a -q -f status=exited); }
+dkrm() { docker rm $(docker ps -a -q -f status=exited); }
 
 # Stop and Remove all containers
-alias dkrmf='dk stop $(dk ps -a -q) && dk rm $(dk ps -a -q)'
+alias dkrmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 
 # Remove untagged images
-dkrni() { dk rmi $(di | grep "$<none>" | awk '{print $3}') }
+dkrni() { docker rmi $(docker images | grep "$<none>" | awk '{print $3}') }
 
 # Remove all images
-dkrai() { dk rmi $(di -q) }
+dkrai() { docker rmi $(di -q) }
 
 # dkfile build, e.g., $dbu tcnksm/test 
-dkbu() { dk build -t=$1 .; }
-
-# Show all alias related dk
-dalias() { alias | grep 'dk' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+dkbu() { docker build -t=$1 .; }
 
 # dockly
 alias dockly='docker run -it --rm --name dockly -v /var/run/docker.sock:/var/run/docker.sock rothgar/dockly:latest'
+
+# amtctl
+alias amtctrl='docker run -it --rm --name amtctrl -v ~/.config/amtctrl/hosts.cfg:/root/.config/amtctrl/hosts.cfg rothgar/amtctrl'
