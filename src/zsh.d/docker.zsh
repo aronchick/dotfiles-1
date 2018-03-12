@@ -36,9 +36,11 @@ alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dkd="docker run -d -P"
 
 # Run interactive container, e.g., $dki base /bin/bash
-alias dki="docker run -i -t -P --rm"
+alias dki="docker run -i -t --rm"
+
 # run new container with bash
 dkib() { docker run -i -t -P --rm ${1} /bin/bash }
+
 # run bash in an existing container
 dksh() { docker exec -i -t ${1} /bin/bash }
 
@@ -55,7 +57,7 @@ alias dkrmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 dkrni() { docker rmi $(docker images | grep "$<none>" | awk '{print $3}') }
 
 # Remove all images
-dkrai() { docker rmi $(di -q) }
+dkrai() { docker rmi $(docker images -q) }
 
 # dkfile build, e.g., $dbu tcnksm/test 
 dkbu() { docker build -t=$1 .; }

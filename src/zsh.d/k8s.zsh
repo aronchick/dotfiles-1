@@ -11,11 +11,7 @@ if [ $commands[kubectl] ]; then
     }
   fi
 
-  kc() {
-    kubectl --namespace ${KUBE_NAMESPACE:-default} "$@"
-  }
-  
-  # get autocompletions from kubectl command
-  compdef kc=kubectl
-  kcsh() { kc exec -i -t "$@" /bin/bash }
+  alias kc='kubectl --namespace ${KUBE_NAMESPACE:-default} '
+
+  kcsh() { kubectl exec -i -t "$@" /bin/bash }
 fi
