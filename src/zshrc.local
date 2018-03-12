@@ -1,8 +1,8 @@
 #-----------VARS----------------------
 
 export SHELL='/bin/zsh'
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export CDPATH='.:~:~/src/'
 export GOROOT=$HOME/bin/go
 export RSYNC_RSH=ssh
@@ -17,6 +17,7 @@ export TZ=':/etc/localtime'
 #------------OPTIONS------------------
 
 setopt DVORAK                    # use dvorak keyboard layout for misspelled suggestions
+setopt append_history            # append to history file
 setopt extended_glob             # more glob features
 setopt extended_history          # Save timestamps with history
 setopt hist_no_store             # Don't store history commands
@@ -32,7 +33,7 @@ alias ll='ls -AlFh'
 alias la='ls -A'
 alias l='ls -CF'
 alias latr='ls -lAtr'
-alias lla='ll -A'       
+alias lla='ll -A'
 alias l1='ls -1A'       # All files in 1 column
 alias tree='tree -F'
 alias tre='tree -F -L 1'
@@ -61,7 +62,7 @@ alias httpdump="sudo tcpdump -A -s 10240 'tcp port 4080 and (((ip[2:2] - ((ip[0]
     | sed -r 's/^........(GET |HTTP\/|POST |HEAD )/\n\1/g'"
 
 # vhosts
-alias hosts='sudo vim /etc/hosts'
+alias hosts='sudo nvim /etc/hosts'
 
 # File size
 alias fs="stat -f '%z bytes'"
@@ -78,9 +79,8 @@ alias stfu="/dev/null"
 alias wtf="/dev/urandom"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lsg="sudo lsof | grep"
-alias lvim='vim -c "normal '\''0"'
-alias v='vim'
-alias sv='sudo vim'
+alias v='nvim'
+alias sv='sudo nvim'
 alias lmsg='sudo less +F /var/log/messages'
 alias dmsg='less +F /var/log/dmesg'
 alias -g H='| head'
@@ -98,8 +98,8 @@ alias c="tr -d '\n' | xclip -selection clipboard"
 alias watch="watch "
 
 # *ctl
-function sc() { 
-  if [[ "$1" == "restart" ]] || [[ "$1" == "daemon-reload" ]]; then 
+function sc() {
+  if [[ "$1" == "restart" ]] || [[ "$1" == "daemon-reload" ]]; then
     sudo systemctl "${@}"
   else
     systemctl "${@}"
@@ -199,7 +199,7 @@ function rm-sshkey() {
     return
   fi
   local CONFIRM=N
-  echo "Delete? (y/N): " 
+  echo "Delete? (y/N): "
   read CONFIRM
   if [[ $CONFIRM == 'y' ]]; then
     sed -i "/$1/d" $HOME/.ssh/known_hosts
@@ -284,6 +284,13 @@ command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 if [[ -d $HOME/bin/google-cloud-sdk ]]; then
   source '/home/jgarr/bin/google-cloud-sdk/path.zsh.inc'
 fi
+
+# Load custom completions
+fpath=( $HOME/.dotfiles/src/completions $fpath )
+
+# enable docker command stacking
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # gcloud command completion
 if [[ -d $HOME/src/gcloud-zsh-completion ]]; then
