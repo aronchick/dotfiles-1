@@ -12,34 +12,37 @@ function docker() {
   fi
 }
 
-alias docker='docker'
+alias dk=docker
 
 drmi() { docker rmi $(docker images -q -f dangling=true); }
 
 alias dkl='docker logs -f'
-alias dm='docker-machine'
-alias dc='docker-compose'
 
 # Get container process
-alias dps="docker ps"
+alias dkps="docker ps"
 
 # Get process included stop container
-alias dpsa="docker ps -a"
+alias dkpsa="docker ps -a"
 
 # Get images
-alias di="docker images"
+alias dki="docker images"
 
 # Get container IP
-alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-
-# Run deamonized container, e.g., $dkd base /bin/echo hello
-alias dkd="docker run -d -P"
+alias dkip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
 # Run interactive container, e.g., $dki base /bin/bash
 alias dki="docker run -i -t --rm"
 
+alias dkt="docker tag"
+alias dks="docker start"
+alias dkrn="docker rename"
+alias dktop="docker top"
+alias dkdf="docker system df"
+alias dkss="docker stats"
+alias dkpl="docker pull"
+
 # run new container with bash
-dkib() { docker run -i -t -P --rm ${1} /bin/bash }
+dkish() { docker run -i -t --rm ${1} /bin/bash }
 
 # run bash in an existing container
 dksh() { docker exec -i -t ${1} /bin/bash }
@@ -59,7 +62,7 @@ dkrni() { docker rmi $(docker images | grep "$<none>" | awk '{print $3}') }
 # Remove all images
 dkrai() { docker rmi $(docker images -q) }
 
-# dkfile build, e.g., $dbu tcnksm/test 
+# dkfile build, e.g., $dbu tcnksm/test
 dkbu() { docker build -t=$1 .; }
 
 # dockly
