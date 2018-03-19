@@ -13,32 +13,23 @@ Plugin 'gmarik/Vundle.vim'
 
 " Syntax highlighting etc
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'puppetlabs/puppet-syntax-vim'
-Plugin 'hashivim/vim-hashicorp-tools'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/syntastic'
-Plugin 'jnwhiteh/vim-golang'
 Plugin 'gmarik/vim-markdown'
-Plugin 'saltstack/salt-vim'
 Plugin 'stephpy/vim-yaml'
-Plugin 'fatih/vim-go'
+Plugin 'elzr/vim-json'
+Plugin 'fatih/molokai'
 
 " Management plugins
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'ciaranm/detectindent'
-Plugin 'tomtom/tcomment_vim'
 Plugin 'yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
-Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
-Plugin 'kien/ctrlp.vim'
-Plugin 'sjl/gundo.vim'
 Plugin 'rking/ag.vim'
 
 " Git integration
@@ -53,6 +44,8 @@ filetype plugin indent on
 set nocp
 set nobackup
 set noswapfile
+set backspace=indent,eol,start
+set mouse=nv       " Make the mouse work in normal and visual mode
 set linebreak      " wrap lines on 'word' boundaries
 set shiftwidth=4   " number of spaces to use for autoindenting
 set tabstop=4      " a tab is four spaces
@@ -99,7 +92,7 @@ nnoremap <Leader>an :set nonumber! norelativenumber!<CR>  " toggle all numbers
 nnoremap <Leader>n  :set nonumber!<CR>
 nnoremap <Leader>rn :set norelativenumber!<CR>
 nnoremap <Leader>c  :noh<CR>                              " clear highlighting
-nnoremap <Leader>l :IndentLinesToggle<CR> :set nonumber! norelativenumber!<CR>
+nnoremap <Leader>l :IndentLinesToggle<CR> :set nonumber! norelativenumber<CR>
 nnoremap <Leader>p  :set paste!<CR>                       " toggle paste
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
@@ -112,15 +105,15 @@ command! W w
 command! Q q
 map q: :q
 
+" This enables us to undo files even if you exit Vim.
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.config/vim/tmp/undo//
+endif
+
 " Custom commands
 command Write call WriteMode()
 
-" press jj to escape insert mode  
-imap jj <Esc>
-set backspace=indent,eol,start
-
-" Make the mouse work in normal and visual mode
-set mouse=nv
 
 " }}}
 
@@ -133,6 +126,11 @@ set hlsearch                    "hls:   highlights search results
 set expandtab
 set smarttab
 set autoindent
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " }}}
 
@@ -243,6 +241,13 @@ cmap w! w !sudo tee > /dev/null %
 " fix dark blue color
 "hi comment ctermfg=blue
 set background=dark
+
+" Colorscheme
+syntax enable
+set t_Co=256
+let g:rehash256 = 1
+let g:molokai_original = 1
+colorscheme molokai
 
 " Make a simple "search" text object.
 " http://vim.wikia.com/wiki/Copy_or_change_search_hit
