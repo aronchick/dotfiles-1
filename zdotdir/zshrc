@@ -13,6 +13,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export TZ=':/etc/localtime'
 export PATH=$HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export LESS='-F -g -i -M -R -S -w -X -z-4'   # default less options
 
 #------------OPTIONS------------------
 
@@ -307,7 +308,9 @@ return-limits(){
  }
 
 # special sourcing for syntax highlighting
-source ${ZDOTDIR:-$HOME}/zsh.d/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -d ${ZDOTDIR:-$HOME}/zsh.d/zsh-syntax-highlighting/zsh-syntax-highlighting ]]; then
+    source ${ZDOTDIR:-$HOME}/zsh.d/zsh-syntax-highlighting/zsh-syntax-highlighting
+fi
 
 # Load external files
 if [[ -d "${ZDOTDIR:-$HOME}"/zsh.d ]]; then
