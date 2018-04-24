@@ -9,23 +9,13 @@ printf "${WARN}"
 #read CONT
 CONT=y
 
-# run this command as is and .zprezto will be cloned to your home directory
-# run with ZDOTDIR=/path/you/want dotfiles-install.sh
-# to clone prezto to a different folder
-
 DOTDIR="${DOTFILESDIR:-${HOME}/.dotfiles}"
-ZDIR="${ZDOTDIR:-${HOME}/.dotfiles/src/.zprezto}"
 
 if [[ $CONT == "y" ]]; then
   # first we need to put the zshenv in place to not clutter ~/ too much
-  if [ -d ${ZDIR} ]
-  then
-      echo "linking zshenv"
-      ln -s ${ZDIR}/runcoms/zshenv "${HOME}"/.zshenv
-  else
-      git clone --recurse https://github.com/rothgar/prezto.git "${ZDIR}"
-  fi
-  
+  echo "linking zshenv"
+  ln -s ${ZDIR}/runcoms/zshenv "${HOME}"/.zshenv
+
   if [ -d "${DOTDIR}" ]; then
     for DOT_FILE in $( ls -A "${DOTDIR}"/ln )
       do
