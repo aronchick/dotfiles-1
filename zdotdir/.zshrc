@@ -8,7 +8,7 @@ export RSYNC_RSH=ssh
 export JAVA_HOME='/usr/java/latest'
 export HISTSIZE='10000'
 export SAVEHIST='100000'
-export HISTFILE=$HOME/.dotfiles/src/.zhistory
+export HISTFILE=$ZDOTDIR/.zhistory
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export TZ=':/etc/localtime'
@@ -94,6 +94,7 @@ fi
 
 # MISC commands
 alias g='git'
+alias gr='cd $(git rev-parse --show-toplevel)'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lsg="sudo lsof | grep"
 
