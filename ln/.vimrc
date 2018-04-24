@@ -20,6 +20,7 @@ Plugin 'gmarik/vim-markdown'
 Plugin 'stephpy/vim-yaml'
 Plugin 'elzr/vim-json'
 Plugin 'fatih/molokai'
+Plugin 'fatih/vim-go'
 
 " Management plugins
 Plugin 'airblade/vim-gitgutter'
@@ -241,6 +242,11 @@ cmap w! w !sudo tee > /dev/null %
 " fix dark blue color
 "hi comment ctermfg=blue
 set background=dark
+
+" vim-go settings
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
 " Colorscheme
 syntax enable
