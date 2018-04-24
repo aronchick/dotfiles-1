@@ -12,8 +12,9 @@ ln/.config/*
 *.swp
 .DS_Store
 away.log
-src/.z*
-src/.dir_history
+zdotdir/.zhistory
+zdotdir/.zcompdump
+zdotdir/.zkbd
 *fnotify
 
 # tmux plugins
