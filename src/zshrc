@@ -1,10 +1,9 @@
 #-----------VARS----------------------
 
 export SHELL='/bin/zsh'
-export EDITOR='nvim'
-export VISUAL='nvim'
 export CDPATH='.:~:~/src/'
 export GOROOT=$HOME/bin/go
+export GOPATH=$HOME/go
 export RSYNC_RSH=ssh
 export JAVA_HOME='/usr/java/latest'
 export HISTSIZE='10000'
@@ -13,17 +12,43 @@ export HISTFILE=$HOME/.dotfiles/src/.zhistory
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export TZ=':/etc/localtime'
+export PATH=$HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 #------------OPTIONS------------------
 
 setopt DVORAK                    # use dvorak keyboard layout for misspelled suggestions
-setopt append_history            # append to history file
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt APPEND_HISTORY            # append to history file
+setopt HIST_NO_STORE             # Don't store history commands
 setopt extended_glob             # more glob features
-setopt extended_history          # Save timestamps with history
-setopt hist_no_store             # Don't store history commands
-setopt hist_save_no_dups         # Don't save duplicate history entries
-setopt hist_ignore_all_dups      # Ignore old command duplicates (in current session)
-setopt inc_append_history        # Append history immediately
+setopt RC_QUOTES                 # Allow 'Henry''s Garage' instead of 'Henry'\''s Garage'
+# Job management
+setopt LONG_LIST_JOBS     # List jobs in the long format by default.
+setopt AUTO_RESUME        # Attempt to resume existing job before creating a new process.
+setopt NOTIFY             # Report status of background jobs immediately.
+unsetopt BG_NICE          # Dont run all background jobs at a lower priority.
+unsetopt HUP              # Dont kill jobs on shell exit.
+unsetopt CHECK_JOBS       # Dont report on jobs when shell exit.
+# Directory stuff
+setopt AUTO_CD              # Auto changes to a directory without typing cd.
+setopt AUTO_PUSHD           # Push the old directory onto the stack on cd.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+setopt PUSHD_TO_HOME        # Push to home directory when no argument is given.
+setopt CDABLE_VARS          # Change directory to a path stored in a variable.
+setopt AUTO_NAME_DIRS       # Auto add variable-stored paths to ~ list.
+setopt MULTIOS              # Write to multiple descriptors.
+setopt EXTENDED_GLOB        # Use extended globbing syntax.
 
 #------------ALIASES------------------
 
@@ -37,13 +62,6 @@ alias lla='ll -A'
 alias l1='ls -1A'       # All files in 1 column
 alias tree='tree -F'
 alias tre='tree -F -L 1'
-
-# fasd
-alias a='fasd -a'        # any
-alias sd='fasd -sid'     # interactive directory selection
-alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
 
 # Easier navigation: .., ..., -
 alias ..='cd ..'
@@ -61,8 +79,8 @@ alias httpdump="sudo tcpdump -A -s 10240 'tcp port 4080 and (((ip[2:2] - ((ip[0]
     | egrep --line-buffered \"^........(GET |HTTP\/|POST |HEAD )|^[A-Za-z0-9-]+: \" \
     | sed -r 's/^........(GET |HTTP\/|POST |HEAD )/\n\1/g'"
 
-# vhosts
-alias hosts='sudo nvim /etc/hosts'
+# hosts
+alias hosts='sudo vim /etc/hosts'
 
 # File size
 alias fs="stat -f '%z bytes'"
@@ -74,40 +92,41 @@ if (( $+commands[subscription-manager] )) ; then
 fi
 
 # MISC commands
-alias gtfo="/dev/null"
-alias stfu="/dev/null"
-alias wtf="/dev/urandom"
+alias g='git'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias lsg="sudo lsof | grep"
-alias v='nvim'
-alias sv='sudo nvim'
+
+# Use NeoVim if it's installed
+if (( $+commands[nvim] )); then
+    alias vim='nvim'
+    export EDITOR='nvim'
+    export VISUAL='nvim'
+fi
+alias v='vim'
+alias sv='sudo vim'
+
 alias lmsg='sudo less +F /var/log/messages'
 alias dmsg='less +F /var/log/dmesg'
 alias -g H='| head'
 alias -g L='| less'
 alias -g G='| grep'
 alias -g W='| wc -l'
+alias -g C="| tr -d '\n' | xclip -selection clipboard"
+
 alias df="df -h"
 alias rpg="rpm -qa | grep -i"
 alias ylist='yum list --showduplicates'
 alias ygroups="yum groupinfo '*' | less +/"
 alias curl-trace='curl -w "@${HOME}/.dotfiles/ln/curl-format" -o /dev/null -s'
 alias open='xdg-open'
-alias c="tr -d '\n' | xclip -selection clipboard"
 # Let me use aliases with watch command
 alias watch="watch "
 
 # *ctl
-function sc() {
-  if [[ "$1" == "restart" ]] || [[ "$1" == "daemon-reload" ]]; then
-    sudo systemctl "${@}"
-  else
-    systemctl "${@}"
-  fi
-}
+alias sc='sudo systemctl'
+alias scs='systemctl status'
 alias scr='sudo systemctl restart'
 alias scc='systemctl cat'
-alias scs='systemctl status'
 alias jc='sudo journalctl'
 alias jcf='sudo journalctl -flu'
 alias mc='sudo machinectl'
@@ -131,13 +150,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# Show top 10 commands
+alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 
 # Key binds
 # Use Ctrl+r even if I'm using vi key bindings
@@ -208,23 +228,21 @@ function rm-sshkey() {
   fi
 }
 
-# SSH to a host when it becomes available
-function sshup() { while $(ping -c 1 ${1} | grep -qi unreachable); do printf %s "."; sleep 1; done && ssh "$1"; }
+# Enable completions
+zmodload -i zsh/parameter
+if ! (( $+functions[compdef] )) ; then
+  autoload -U +X compinit && compinit
+  autoload -U +X bashcompinit && bashcompinit
+fi
 
 # Most important functions
-disappointed() { echo -n " ಠ_ಠ " | xclip -selection clipboard; }
-flip() { echo -n "（╯°□°）╯ ┻━┻" | xclip -selection clipboard; }
-shrug() { echo -n "¯\_(ツ)_/¯" | xclip -selection clipboard; }
+disappointed() { echo -n " ಠ_ಠ " |tee /dev/tty| xclip -selection clipboard; }
+flip() { echo -n "（╯°□°）╯ ┻━┻" |tee /dev/tty| xclip -selection clipboard; }
+shrug() { echo -n "¯\_(ツ)_/¯" |tee /dev/tty| xclip -selection clipboard; }
 matrix() { echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|awk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}' }
 
 # Backup funciton
 bu() { cp "$1" "$1".backup-`date +%y%m%d`; }
-
-if [[ -d "${ZDOTDIR}"/zsh.d ]]; then
-    for ZSH_FILE in $(ls -A "${ZDOTDIR}"/zsh.d/*.zsh); do
-        source "${ZSH_FILE}"
-    done
-fi
 
 settitle() {
     printf "\033k$1\033\\"
@@ -273,24 +291,35 @@ if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
 fi
 
-# Curl to bash
-c2b() {
-  curl -L ${1} | sudo bash
-}
-export PATH="$HOME/bin:$HOME/.dotfiles/bin:$GOROOT/bin:$EC2_HOME/bin:$PATH"
-command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
+return-limits(){
+     for process in $@; do
+          process_pids=`ps -C $process -o pid --no-headers | cut -d " " -f 2`
+
+          if [ -z $@ ]; then
+             echo "[no $process running]"
+          else
+             for pid in $process_pids; do
+                   echo "[$process #$pid -- limits]"
+                   cat /proc/$pid/limits
+             done
+          fi
+     done
+ }
+
+# special sourcing for syntax highlighting
+source ${ZDOTDIR:-$HOME}/zsh.d/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Load external files
+if [[ -d "${ZDOTDIR:-$HOME}"/zsh.d ]]; then
+    for ZSH_FILE in $(ls -A "${ZDOTDIR:-$HOME}"/zsh.d/*.zsh); do
+        source "${ZSH_FILE}"
+    done
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [[ -d $HOME/bin/google-cloud-sdk ]]; then
   source '/home/jgarr/bin/google-cloud-sdk/path.zsh.inc'
 fi
-
-# Load custom completions
-fpath=( $HOME/.dotfiles/src/completions $fpath )
-
-# enable docker command stacking
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # gcloud command completion
 if [[ -d $HOME/src/gcloud-zsh-completion ]]; then
@@ -298,3 +327,8 @@ if [[ -d $HOME/src/gcloud-zsh-completion ]]; then
   autoload -U compinit compdef
   compinit
 fi
+
+# enable docker command stacking
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
