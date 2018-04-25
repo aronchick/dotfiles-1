@@ -10,11 +10,11 @@ ln/.config/*
 *.pem
 *.autosave
 *.swp
-.DS_Store
+**/.DS_Store
 away.log
-zdotdir/.zhistory
-zdotdir/.zcompdump
-zdotdir/.zkbd
+**/.zhistory
+**/.zcompdump
+**/.zkbd
 *fnotify
 
 # tmux plugins
