@@ -23,6 +23,7 @@ Plugin 'fatih/molokai'
 Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Management plugins
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ciaranm/detectindent'
@@ -36,6 +37,14 @@ Plugin 'rking/ag.vim'
 " Git integration
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
+
+" Go stuff
+if has('nvim')
+    Plugin 'sebdah/vim-delve'
+    if has("python3")
+        Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    endif
+endif
 
 call vundle#end()
 
@@ -155,14 +164,40 @@ set viminfo='200                "vi:    For a nice, huuuuuge viminfo file
 " Ag options
 let g:ag_working_path_mode="r"  " Always search from project root
 
-" NERDtree options
+"----------------------------------------------
+" Plugin: scrooloose/nerdtree
+"----------------------------------------------
+" Toggle NERDtree with C-n
+map <C-n> :NERDTreeToggle<CR>
+
+" Files to ignore
+let NERDTreeIgnore = [
+    \ '\~$',
+    \ '\.pyc$',
+    \ '^\.DS_Store$',
+    \ '^node_modules$',
+    \ '^.ropeproject$',
+    \ '^__pycache__$'
+\]
+
+" Close vim if NERDTree is the only opened window.
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Show hidden files by default.
+let NERDTreeShowHidden = 1
+
+" Allow NERDTree to change session root.
+let g:NERDTreeChDirMode = 2
+
 " auto open if no file sent as arg
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Toggle NERDtree with C-n
-map <C-n> :NERDTreeToggle<CR>
-" Autoclose if only NERDtree is left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"----------------------------------------------
+" Plugin: 'terryma/vim-multiple-cursors'
+"----------------------------------------------
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_skip_key='<C-b>'
 
 " allows cursor change in tmux mode
 if exists('$TMUX')
@@ -218,10 +253,6 @@ cmap w! w !sudo tee > /dev/null %
 "hi comment ctermfg=blue
 set background=dark
 
-" vim-go settings
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
 " Colorscheme
 syntax enable
@@ -247,6 +278,21 @@ set timeoutlen=1000
 au InsertEnter * set timeout
 au InsertLeave * set notimeout
 
+"----------------------------------------------
+" vim-go
+"----------------------------------------------
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+
 function! WriteMode()
     set nonumber
     set nocursorline
@@ -268,6 +314,26 @@ au FileType go set expandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
+au FileType go nmap <leader>gb <Plug>(go-build)
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <leader>gd <Plug>(go-def)
+
+"----------------------------------------------
+" Plugin: Shougo/deoplete.nvim
+"----------------------------------------------
+" Enable deoplete autocompletion at start
+if has('nvim')
+    " Enable deoplete on startup
+    let g:deoplete#enable_at_startup = 1
+endif
+" Disable deoplete when in multi cursor mode
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
 
 "----------------------------------------------
 " Language: Puppet
