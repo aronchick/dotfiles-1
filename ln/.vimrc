@@ -20,7 +20,7 @@ Plugin 'gmarik/vim-markdown'
 Plugin 'stephpy/vim-yaml'
 Plugin 'elzr/vim-json'
 Plugin 'fatih/molokai'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Management plugins
 Plugin 'airblade/vim-gitgutter'
@@ -262,12 +262,20 @@ endfunction
 au FileType asciidoc call WriteMode()
 
 "----------------------------------------------
+" Language: Go
+"----------------------------------------------
+au FileType go set expandtab
+au FileType go set shiftwidth=4
+au FileType go set softtabstop=4
+au FileType go set tabstop=4
+
+"----------------------------------------------
 " Language: Puppet
 "----------------------------------------------
-au BufEnter *.pp tabstop=4
-au FileType *.pp shiftwidth=4
-au FileType *.pp softtabstop=4
-au FileType *.pp commentstring=#\ %s
+au BufEnter pp set tabstop=4
+au FileType pp set shiftwidth=4
+au FileType pp set softtabstop=4
+au FileType pp set commentstring=#\ %s
 
 "----------------------------------------------
 " Language: Bash
