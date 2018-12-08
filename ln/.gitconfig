@@ -1,17 +1,19 @@
 [user]
 	name = Justin Garrison
 	email = justinleegarrison@gmail.com
+[includeIf "gitdir:~/src/work/"]
+	path = ~/.gitconfig-work
 [alias]
   ds = diff --staged      # git ds - diff your staged changes == review before committing.
   s = status --short --branch    # smarter status - include tag and branch info
   fup = log --since=1.day --oneline --author='Justin Garrison'  # I know what you did yesterday - great for follow-ups
   ls = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short  # pretty one-line log with tags, branches and authors
   lsv = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short --    numstat # a verbose ls, shows changed files too
-  
+
   prune = fetch --prune
   # Because I constantly forget how to do this
   # https://git-scm.com/docs/git-fetch#git-fetch--p
-  
+
   # some resets without explanation
   r = reset
   r1 = reset HEAD^
@@ -19,36 +21,36 @@
   rh = reset --hard
   rh1 = reset HEAD^ --hard
   rh2 = reset HEAD^^ --hard
-  
+
   # basic shortcuts
   cp = cherry-pick
   cl = clone
   ci = commit
   co = checkout
-  br = branch 
+  br = branch
   diff = diff --word-diff
   dc = diff --cached
   d = diff
-  g = grep -in 
+  g = grep -in
   a = add
   cam = commit -a -m
   cm = commit -m
-  
+
   # stash shortcuts
   sl = stash list
   sa = stash apply
   ss = stash save
-  
+
   stash-all = stash save --include-untracked
   # We wanna grab those pesky un-added files!
   # https://git-scm.com/docs/git-stash
 
   # log related - thanks to @mwd410
-  l = log 
+  l = log
   lh = log --graph
   la = !git lh --date-order --all 2> /dev/null
   lb = log --graph --simplify-by-decoration
-  lba = !git lb --all 
+  lba = !git lb --all
   h = !git --no-pager log --graph -n 15
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
@@ -135,7 +137,7 @@
   # Note: this global option applies during receive and transmit
   # https://git-scm.com/docs/git-config#git-config-transferfsckObjects
   # via https://groups.google.com/forum/#!topic/binary-transparency/f-BI4o8HZW0
-  
+
 # A nice little github-like colorful, split diff right in the console.
 # via http://owen.cymru/github-style-diff-in-terminal-with-icdiff/
 [diff]
