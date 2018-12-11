@@ -14,12 +14,13 @@ DOTDIR="${DOTFILESDIR:-${HOME}/.dotfiles}"
 if [[ $CONT == "y" ]]; then
   # first we need to put the zshenv in place to not clutter ~/ too much
   echo "linking zshenv"
-  ln -s ${ZDIR}/runcoms/zshenv "${HOME}"/.zshenv
+  ln -s ${DOTDIR}/zdotdir/zshenv "${HOME}"/.zshenv
 
   if [ -d "${DOTDIR}" ]; then
     for DOT_FILE in $( ls -A "${DOTDIR}"/ln )
       do
-          ln -s "${DOTDIR}"/ln/"${DOT_FILE}" "${HOME}"/"${DOT_FILE}" 
+        echo "creating symlink for ${DOT_FILE}"
+        ln -s "${DOTDIR}"/ln/"${DOT_FILE}" "${HOME}"/"${DOT_FILE}"
       done
   fi
   # update and install vim plugins
