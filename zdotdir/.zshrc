@@ -176,6 +176,10 @@ bindkey -M vicmd j vi-down-line-or-history
 
 # attach to a tmux session or start a new session if one doesn't exist
 function muxt() { tmux attach || tmux }
+
+# Open a file in lower 1/3 of tmux screen
+peek() { tmux split-window -p 33 "$EDITOR" "$@" }
+
 # bind above function to Ctrl+t
 # ^q = pushline, \n = execute by entering a new line
 bindkey -s '^[t' '^qmuxt\n'
