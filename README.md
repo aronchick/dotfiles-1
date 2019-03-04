@@ -1,4 +1,4 @@
-rothgar’s dotfiles
+aronchick’s dotfiles
 ==================
 
 Highly opinionated dotfiles for all of my computers. Many options were stolen 
@@ -29,7 +29,7 @@ Install
 Install with git
 
 ```
-git clone https://github.com/rothgar/dotfiles.git ~/.dotfiles
+git clone https://github.com/aronchick/dotfiles-1.git ~/.dotfiles
 ```
 
 run `~/.dotfiles/init/dotfiles-install.sh` to get the shell started
